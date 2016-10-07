@@ -16,6 +16,26 @@ if($_GET['mod']=='home'){
 }elseif ($_GET['mod']=='checkout-tanks') {
 	include("well_cont/checkout-tanks.php");
 }
+
+//di bawah HOME
+elseif ($_GET['mod']=='product-terlaris') {
+	include("well_cont/product-terlaris.php");
+}
+elseif ($_GET['mod']=='product-promo') {
+	include("well_cont/product-promo.php");
+}
+elseif ($_GET['mod']=='product-diskon') {
+	include("well_cont/product-diskon.php");
+}
+elseif ($_GET['mod']=='product-sold-out') {
+	include("well_cont/product-sold-out.php");
+}
+elseif ($_GET['mod']=='product-ready-stock') {
+	include("well_cont/product-ready-stock.php");
+}
+elseif ($_GET['mod']=='product-all') {
+	include("well_cont/product-all.php");
+}
 // statistik page start
 elseif ($_GET['mod']=='cara-pemesanan') {
 	include("well_cont/page/cara-pemesanan.php");

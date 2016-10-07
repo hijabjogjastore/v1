@@ -33,17 +33,17 @@
 
                     <li role="separator" class="divider"></li>
 
-                    <li><a href="#">Product Terlaris</a></li>
+                    <li><a href="product-terlaris.html">Product Terlaris</a></li>
 
-                    <li><a href="#">Promo</a></li>
+                    <li><a href="product-promo.html">Promo</a></li>
 
-                    <li><a href="#">Diskon</a></li>
+                    <li><a href="product-diskon.html">Diskon</a></li>
 
-                    <li><a href="#">Sould Out</a></li>
+                    <li><a href="product-sold-out.html">Sold Out</a></li>
 
-                    <li><a href="#">Ready Stock</a></li>
+                    <li><a href="product-ready-stock.html">Ready Stock</a></li>
 
-                    <li><a href="#">All Product</a></li>
+                    <li><a href="product-all.html">All Product</a></li>
 
                     <!-- <li><a href="#" onclick="#">Sale, Sale, Sale &rsaquo;</a></li>
  -->
