@@ -120,9 +120,47 @@ switch(@$_GET['act']){
 			<td class='left'>Diskon</td>
 			<td class='left'><input  type='text'  name='product_discount' size=55 maxlength=10> * Penulisan harga tanpa tanda (.) titik</td></tr>
 			
+
+		<tr>
+			<td class='left'>Product Terlaris</td>
+			<td class='left'>		
+						<input type='radio' id='ossm' name='product_terlaris' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_terlaris' value='N' checked> No 
+			</td>
+		</tr>
+
 		<tr>
 			<td class='left'>Promo</td>
-			<td class='left'><input class='msgBox' type='text'  name='product_promo' size=55 maxlength=10> * Penulisan harga tanpa tanda (.) titik</td></tr>
+			<td class='left'>		
+						<input type='radio' id='ossm' name='product_promo' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_promo' value='N' checked> No 
+			</td>
+		</tr>
+
+		<tr>
+			<td class='left'>Sold Out</td>
+			<td class='left'>		
+						<input type='radio' id='ossm' name='product_sold_out' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_sold_out' value='N' checked> No 
+			</td>
+		</tr>
+
+		<tr>
+			<td class='left'>Pre Order</td>
+			<td class='left'>		
+						<input type='radio' id='ossm' name='product_pre_order' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_pre_order' value='N' checked> No 
+			</td>
+		</tr>
+
+		<tr>
+			<td class='left'>Ready Stock</td>
+			<td class='left'>		
+						<input type='radio' id='ossm' name='product_ready_stock' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_ready_stock' value='N' checked> No 
+			</td>
+		</tr>
+
 		<tr>
 			<td class='left'>Warna</td>
 			<td class='left'><input class='msgBox' type='text'  name='product_color' size=55 maxlength=10> * Penulisan harga tanpa tanda (.) titik</td></tr>
@@ -234,9 +272,85 @@ switch(@$_GET['act']){
 			<td class='left'>Diskon</td>
 			<td class='left'><input  type='text'  name='product_discount' value='$r[product_discount]' size='55' maxlength=10> * Penulisan harga tanpa tanda (.) titik</td></tr>
 			
+
+
+		<tr>
+			<td class='left'>Product Terlaris</td>
+			<td class='left'>";
+
+					if($r['product_terlaris'] == 'N'){
+						echo"<input type='radio' id='ossm' name='product_terlaris' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_terlaris' value='N' checked> No ";
+						}else {
+						echo"<input type='radio' id='ossm' name='product_terlaris' value='Y' checked> Yes 
+						<input type='radio' id='ossm' name='product_terlaris' value='N'> No ";
+						}
+			echo"
+			</td>
+		</tr>
+
 		<tr>
 			<td class='left'>Promo</td>
-			<td class='left'><input class='msgBox' type='text'  name='product_promo' value='$r[product_promo]' size='55' maxlength='10'> * Penulisan harga tanpa tanda (.) titik</td></tr>
+			<td class='left'>";
+
+					if($r['product_promo'] == 'N'){
+					echo"<input type='radio' id='ossm' name='product_promo' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_promo' value='N' checked> No ";
+						}else {
+						echo"<input type='radio' id='ossm' name='product_promo' value='Y' checked> Yes 
+						<input type='radio' id='ossm' name='product_promo' value='N'> No ";
+						}
+			echo"
+			</td>
+		</tr>
+		<tr>
+			<td class='left'>Sold Out</td>
+			<td class='left'>";
+
+					if($r['product_sold_out'] == 'N'){
+						echo"<input type='radio' id='ossm' name='product_sold_out' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_sold_out' value='N' checked> No ";
+						}else {
+						echo"<input type='radio' id='ossm' name='product_sold_out' value='Y' checked> Yes 
+						<input type='radio' id='ossm' name='product_sold_out' value='N'> No ";
+						}
+			echo"
+			</td>
+		</tr>
+
+		<tr>
+			<td class='left'>Pre Order</td>
+			<td class='left'>";
+
+					if($r['product_pre_order'] == 'N'){
+						echo"<input type='radio' id='ossm' name='product_pre_order' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_pre_order' value='N' checked> No ";
+						}else {
+						echo"<input type='radio' id='ossm' name='product_pre_order' value='Y' checked> Yes 
+						<input type='radio' id='ossm' name='product_pre_order' value='N'> No ";
+						}
+			echo"
+			</td>
+		</tr>
+
+		<tr>
+			<td class='left'>Ready Stock</td>
+			<td class='left'>";
+
+					if($r['product_ready_stock'] == 'N'){
+						echo"<input type='radio' id='ossm' name='product_ready_stock' value='Y'> Yes 
+						<input type='radio' id='ossm' name='product_ready_stock' value='N' checked> No ";
+						}else {
+						echo"<input type='radio' id='ossm' name='product_ready_stock' value='Y' checked> Yes 
+						<input type='radio' id='ossm' name='product_ready_stock' value='N'> No ";
+						}
+			echo"
+			</td>
+		</tr>
+
+
+
+
 		<tr>
 			<td class='left'>Warna</td>
 			<td class='left'><input class='msgBox' type='text'  name='product_color' size='55' maxlength='10' value='$r[product_color]'> * Penulisan harga tanpa tanda (.) titik</td></tr>

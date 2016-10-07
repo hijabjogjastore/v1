@@ -104,7 +104,7 @@ $(document).ready(function(){
 <body>
 <div class="sidebar">
 <div class="logo clear">
-				<span class="title" align="center"><img src="../assets/images/logo.png" style="width: 156px;" alt=""></span>
+				<span class="title" align="center"><img src="../assets/images/hijab-jogja-store-logo.png" style="width: 156px;" alt=""></span>
 				<span class="text" align="center"></span>		
 </div>
 	<div class="menu _uppercase">

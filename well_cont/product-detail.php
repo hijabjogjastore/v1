@@ -118,32 +118,17 @@
             <?php
             }
             ?>
-      <!--       <div class="col-md-6">
-                <div class="thumbnail" style="border: none;">
-                    <img class="featurette-image img-responsive" src="assets/images/hijaber1.jpg" alt="Spring Floral Maxi">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="thumbnail" style="border: none;">
-                    <img class="featurette-image img-responsive" src="assets/images/hijaber.jpg" alt="Spring Floral Maxi">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="thumbnail" style="border: none;">
-                    <img class="featurette-image img-responsive" src="assets/images/hijaber1.jpg" alt="Spring Floral Maxi">
-                </div>
-            </div> -->
         </div>
 
 
         <div class="row featurette">
             <div class="col-md-12">
                 <h1 class="product-name text-center"><span style="font-size:0.6em;font-style:italic;">Spring Floral Maxi</span></h1>
-                <p class="text-muted text-center small">Kode: PI10000090002
-                    <br> PinkEmma Project</p>
-                <p class="brand text-center"><a href="http://www.pinkemma.com/baju-muslim/?f_brand=PI">Koleksi PinkEmma Project lainnya &raquo;</a></p>
+                <p class="text-muted text-center small">Kode: <?php echo $data_product_detail['product_code']; ?>
+                    <br><?php echo $data_brand['brand_name']; ?></p>
+                <p class="brand text-center"><a href="#">Koleksi <?php echo $data_brand['brand_name'] ?> lainnya &raquo;</a></p>
                 <p class="text-center lead"><b>Bisa juga pesan lewat:</b></p>
-                <p class="small text-center">LINE: <a href="line://msg/text/cspinkemma%20Pesan%20dong">cspinkemma</a></p>
+                <p class="small text-center">INSTAGRAM: <a href="https:/instagram/hijabjogjastore">hijabjogjastore</a></p>
                 <p class="small text-center">Senin - Jumat: 8 pagi - 8 malam
                 <br>Sabtu & Minggu: 8 pagi - 4 sore</p>
             </div>
@@ -153,14 +138,15 @@
 
                 <p class="lead text-center"><b>Busana Muslim &amp; Hijab</b></p>
                 <ul class="nav nav-pills nav-justified">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atasan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dress Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Blazer Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cardigan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rok Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Celana Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Kerudung Hijab</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Set Busana Muslim</a></li>
+                <?php
+                $sql_category="SELECT * FROM category  ORDER BY category_id DESC LIMIT 8";
+                $result_category=mysql_query($sql_category);
+                while($data_category=mysql_fetch_array($result_category)){
+                ?>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                <?php
+                }
+                ?>
                 </ul>
             </div>
         </div>
@@ -195,7 +181,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="#">Lihat Semua Baru Dipesan Member Lain &raquo;</a>
+                <a href="product.html">Lihat Semua Product &raquo;</a>
             </div>
         </div>
     </div>

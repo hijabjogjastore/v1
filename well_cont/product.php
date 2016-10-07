@@ -20,11 +20,15 @@
                 <div class="form-group">
                     <select class="form-control filter-source" data-label="Pilih Brand">
                         <option value="" class="filter-label">Pilih Brand</option>
-                        <option value="DQ">Mint Project</option>
-                        <option value="GN">Giggle Note</option>
-                        <option value="MS">Mint Scarves</option>
-                        <option value="PI">PinkEmma Project</option>
-                        <option value="SI">Sabs Store</option>
+                        <?php
+                        $sql_brand="select * from brand where brand_id='".$data_product_detail['brand_id']."'";
+                        $result_brand=mysql_query($sql_brand);
+                        while($data_brand=mysql_fetch_array($result_brand)){
+                        ?>
+                        <option value="<?php echo $data_brand['product_id']; ?>"><?php echo $data_brand['brand_name']; ?></option>
+                        <?php
+                        }
+                       ?>
                     </select>
                     <input type="hidden" name="f_brand" class="filter-value" value="">
                 </div>
