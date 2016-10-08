@@ -95,7 +95,7 @@
         <div class="row">
             <!-- row1 start -->
             <?php
-            $p      = new Paging;
+            $p      = new Paging_all;
             $batas  = 9;
             $posisi = $p->cariPosisi($batas);
             $sql_product="select * from product ORDER BY product_id DESC LIMIT $posisi,$batas";

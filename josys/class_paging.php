@@ -271,7 +271,7 @@ $link_halaman = "";
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+	$link_halaman .= "<li><a href=product-sold-out-page-$prev.html>&lsaquo;</a></li>";
 }
 /*else{ 
 	$link_halaman .= "<< First | < Prev | ";
@@ -282,14 +282,14 @@ if($halaman_aktif > 1){
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-sold-out-page-$i.html>$i</a></li>";
   }
 	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
 	  
     for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-sold-out-page-$i.html>$i</a></li>";
     }
 	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
 
@@ -298,7 +298,7 @@ $link_halaman .= "$angka";
 // Link ke halaman berikutnya (Next) dan terakhir (Last) 
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+	$link_halaman .= " <li><a href=product-sold-out-page-$next.html>&rsaquo;</a></li>";
 }
 /*else{
 	//$link_halaman .= " Next > | Last >>";
@@ -334,7 +334,7 @@ $link_halaman = "";
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+	$link_halaman .= "<li><a href=product-ready-stock-page-$prev.html>&lsaquo;</a></li>";
 }
 /*else{ 
 	$link_halaman .= "<< First | < Prev | ";
@@ -345,14 +345,14 @@ if($halaman_aktif > 1){
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-ready-stock-page-$i.html>$i</a></li>";
   }
 	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
 	  
     for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-ready-stock-page-$i.html>$i</a></li>";
     }
 	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
 
@@ -361,7 +361,7 @@ $link_halaman .= "$angka";
 // Link ke halaman berikutnya (Next) dan terakhir (Last) 
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+	$link_halaman .= " <li><a href=product-ready-stock-page-$next.html>&rsaquo;</a></li>";
 }
 /*else{
 	//$link_halaman .= " Next > | Last >>";
@@ -397,7 +397,7 @@ $link_halaman = "";
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+	$link_halaman .= "<li><a href=product-all-page-$prev.html>&lsaquo;</a></li>";
 }
 /*else{ 
 	$link_halaman .= "<< First | < Prev | ";
@@ -408,14 +408,14 @@ if($halaman_aktif > 1){
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-all-page-$i.html>$i</a></li>";
   }
 	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
 	  
     for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+	  $angka .= "<li><a href=product-all-page-$i.html>$i</a></li>";
     }
 	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
 
@@ -424,7 +424,7 @@ $link_halaman .= "$angka";
 // Link ke halaman berikutnya (Next) dan terakhir (Last) 
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+	$link_halaman .= " <li><a href=product-all-page-$next.html>&rsaquo;</a></li>";
 }
 /*else{
 	//$link_halaman .= " Next > | Last >>";
