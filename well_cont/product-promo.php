@@ -95,10 +95,10 @@
         <div class="row">
             <!-- row1 start -->
             <?php
-            $p      = new Paging;
+            $p      = new Paging_promo;
             $batas  = 9;
             $posisi = $p->cariPosisi($batas);
-            $sql_product="select * from product ORDER BY product_id DESC LIMIT $posisi,$batas";
+            $sql_product="select * from product where product_promo='Y' ORDER BY product_id DESC LIMIT $posisi,$batas";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
             $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
@@ -163,7 +163,7 @@
         </div>
         <!-- row end -->
         <?php
-        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product ORDER BY product_id ASC"));
+        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product where product_promo='Y' ORDER BY product_id ASC"));
         $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
         $linkHalaman = $p->navHalaman($_GET['halaman'], $jmlhalaman);
           //echo "<div class='rBox'> <br /><div class='paging'>$linkHalaman <br /><br /></div></div>";

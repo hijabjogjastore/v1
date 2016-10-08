@@ -74,43 +74,11 @@
    
     <div id="owl-carousel">
     </div>
-    <div class="container">
-        <hr class="featurette-divider" />
-        <div class="row">
-            <div class="col-lg-12">
-                <h5 class="featurette-heading" style="font-size:18px;text-align:center;">Koleksi Kami banyak yang Hijab yang Terbaru Lhooo Sist.. Yuuks di Lihat</h5>
-                <h3 class="featurette-heading" style="font-size:18px;text-align:center;">Positif, Kreatif & Ceria</h3>
-            </div>
 
-            <?php
-            $sql_product="select * from product ORDER BY product_id DESC LIMIT 8";
-            $result_product=mysql_query($sql_product);
-            while($data_product=mysql_fetch_array($result_product)){
-            ?>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-inspiration">
-                    <div class="thumb-inspiration">
-                        <div class="thumbnail thumb-content">
-                            <a href="" onclick="#">
-                                <img src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" style="object-fit: cover;" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <br>
-                <p><a href="#" class="small">Lihat Semua Inspirasi Terbaru &raquo;</a></p>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
-                <h1 class="featurette-heading">Koleksi Hijab Terbaru</h1>
+                <h1 class="featurette-heading">Product yang Sudah Terjual</h1>
                 <p>Setiap hari koleksi <strong>Baju Wanita Terbaru</strong> dari <strong>Hijab</strong>, <strong>Dress</strong>, <strong>Kardigan Rajut</strong>, <strong>Blazer</strong>, <strong>Atasan</strong>, sampai <strong>Aksesoris</strong>.</p>
 
             </div>
@@ -130,7 +98,7 @@
             $p      = new Paging;
             $batas  = 9;
             $posisi = $p->cariPosisi($batas);
-            $sql_product="select * from product ORDER BY product_id DESC LIMIT $posisi,$batas";
+            $sql_product="select * from product where product_sold_out='Y' ORDER BY product_id DESC LIMIT $posisi,$batas";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
             $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];

@@ -29,6 +29,250 @@ if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
 	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
 }
+ 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href='#'>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+    }
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+}
+
+return $link_halaman;
+}
+}
+
+//product terlaris
+class Paging_terlaris{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-terlaris-page-$prev.html>&lsaquo;</a></li>";
+}
+/*else{ 
+	$link_halaman .= "<< First | < Prev | ";
+}
+*/
+// Link halaman 1,2,3, ...
+//$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-terlaris-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-terlaris-page-$i.html>$i</a></li>";
+    }
+	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-terlaris-page-$next.html>&rsaquo;</a></li>";
+}
+/*else{
+	//$link_halaman .= " Next > | Last >>";
+}*/
+return $link_halaman;
+}
+}
+
+//product promo
+class Paging_promo{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-promo-page-$prev.html>&lsaquo;</a></li>";
+}
+/*else{ 
+	$link_halaman .= "<< First | < Prev | ";
+}
+*/
+// Link halaman 1,2,3, ...
+//$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-promo-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-promo-page-$i.html>$i</a></li>";
+    }
+	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-promo-page-$next.html>&rsaquo;</a></li>";
+}
+/*else{
+	//$link_halaman .= " Next > | Last >>";
+}*/
+return $link_halaman;
+}
+}
+
+//product diskon
+class Paging_diskon{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-diskon-page-$prev.html>&lsaquo;</a></li>";
+}
+/*else{ 
+	$link_halaman .= "<< First | < Prev | ";
+}
+*/
+// Link halaman 1,2,3, ...
+//$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-diskon-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-diskon-page-$i.html>$i</a></li>";
+    }
+	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-diskon-page-$next.html>&rsaquo;</a></li>";
+}
+/*else{
+	//$link_halaman .= " Next > | Last >>";
+}*/
+return $link_halaman;
+}
+}
+
+//product sould out
+class Paging_sold_out{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+}
 /*else{ 
 	$link_halaman .= "<< First | < Prev | ";
 }
@@ -63,7 +307,131 @@ return $link_halaman;
 }
 }
 
+//ready stoct
+class Paging_ready_stock{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
 
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+}
+/*else{ 
+	$link_halaman .= "<< First | < Prev | ";
+}
+*/
+// Link halaman 1,2,3, ...
+//$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+    }
+	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+}
+/*else{
+	//$link_halaman .= " Next > | Last >>";
+}*/
+return $link_halaman;
+}
+}
+
+//product all
+class Paging_all{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+if(empty($_GET['halaman'])){
+	$posisi=0;
+	$_GET['halaman']=1;
+}
+else{
+	$posisi = ($_GET['halaman']-1) * $batas;
+}
+return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+$jmlhalaman = ceil($jmldata/$batas);
+return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3 (untuk admin)
+function navHalaman($halaman_aktif, $jmlhalaman){
+$link_halaman = "";
+
+// Link ke halaman pertama (first) dan sebelumnya (prev)
+if($halaman_aktif > 1){
+	$prev = $halaman_aktif-1;
+	$link_halaman .= "<li><a href=product-page-$prev.html>&lsaquo;</a></li>";
+}
+/*else{ 
+	$link_halaman .= "<< First | < Prev | ";
+}
+*/
+// Link halaman 1,2,3, ...
+//$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
+  if ($i < 1)
+  	continue;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+  }
+	  $angka .= " <li class='active'><a href=''>$halaman_aktif</a></li>";
+	  
+    for($i=$halaman_aktif+1; $i<($halaman_aktif+6); $i++){
+    if($i > $jmlhalaman)
+      break;
+	  $angka .= "<li><a href=product-page-$i.html>$i</a></li>";
+    }
+	 // $angka .= ($halaman_aktif+2<$jmlhalaman ? " ... | <a href=$_SERVER[PHP_SELF]?mod=$_GET[mod]&halaman=$jmlhalaman>$jmlhalaman</a> | " : " ");
+
+$link_halaman .= "$angka";
+
+// Link ke halaman berikutnya (Next) dan terakhir (Last) 
+if($halaman_aktif < $jmlhalaman){
+	$next = $halaman_aktif+1;
+	$link_halaman .= " <li><a href=product-page-$next.html>&rsaquo;</a></li>";
+}
+/*else{
+	//$link_halaman .= " Next > | Last >>";
+}*/
+return $link_halaman;
+}
+}
 //asli
 class Paging12{
 // Fungsi untuk mencek halaman dan posisi data
