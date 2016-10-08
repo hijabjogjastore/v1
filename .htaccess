@@ -16,13 +16,17 @@ RewriteRule ^product-all.html$ media.php?mod=product-all [L]
 
 
 
+RewriteRule ^product-page-(.*)\.html$ media.php?mod=product&halaman=$1 [L]
+RewriteRule ^product-terlaris-page-(.*)\.html$ media.php?mod=product-terlaris&halaman=$1 [L]
+RewriteRule ^product-promo-page-(.*)\.html$ media.php?mod=product-promo&halaman=$1 [L]
+RewriteRule ^product-diskon-page-(.*)\.html$ media.php?mod=product-diskon&halaman=$1 [L]
+RewriteRule ^product-sold-out-page-(.*)\.html$ media.php?mod=product-sold-out&halaman=$1 [L]
+RewriteRule ^product-ready-stock-page-(.*)\.html$ media.php?mod=product-ready-stock&halaman=$1 [L]
+RewriteRule ^product-all-page-(.*)\.html$ media.php?mod=product-all&halaman=$1 [L]
+
 
 RewriteRule ^details-product-(.*)\.html$ media.php?mod=product-detail&id=$1 [L]
-
-RewriteRule ^product-page-(.*)\.html$ media.php?mod=product&halaman=$1 [L]
-
 RewriteRule ^konfirmasi.html$ media.php?mod=konfirmasi [L]
-
 RewriteRule ^status_pemesanan.html$ media.php?mod=lacak-pesanan [L]
 RewriteRule ^pesanan.html$ media.php?mod=show-lacakpesanan [L]
 
@@ -32,10 +36,7 @@ RewriteRule ^persyaratan-dan-ketentuan.html$ media.php?mod=persyaratan-dan-keten
 RewriteRule ^kebijakan-privasi.html$ media.php?mod=kebijakan-privasi [L]
 RewriteRule ^tentang-kami.html$ media.php?mod=tentang-kami [L]
 RewriteRule ^contact-kami.html$ media.php?mod=contact-kami [L]
-#page
-RewriteRule ^profil-nanaku-hijab-store$ page-2-tentangkami.html [QSA,L]
-RewriteRule ^cara-belanja-nanaku-hijab-store$ page-10-carabelanja.html [QSA,L]
-RewriteRule ^reseller-nanaku-hijab-store$ page-11-reseller.html [QSA,L]
+
 
 #produk
 RewriteRule ^semua-produk-nanaku-hijab-store$ media.php?mod=allProduk [QSA,L]
