@@ -566,4 +566,36 @@ button.close {
 }
 
 
+
+.promo-box {
+    height: 100px;
+    right: -20px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    width: 100px;
+}
+
+.promo-box span.on_promo {
+    background: green;
+    color: #FFF;
+    display: block;
+    left: -9px;
+    font-size: 1em;
+    padding: 5px 0;
+    position: relative;
+    text-align: center;
+    top: 25px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 200px;
+    z-index: 2;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1CFF00;
+}
+
 /*# sourceMappingURL=app.min.css.map */

@@ -71,7 +71,7 @@
             </form>
         </div>
     </div>
-   
+
     <div id="owl-carousel">
     </div>
     <div class="container">
@@ -150,13 +150,27 @@
                         </div>
                         <?php
                         }
+                        //if($data_product['product_promo'] == 'Y'){
                         ?>
-                        <div class="badge-tag orange">
+                        <div class="badge-tag cyan">
+                            Promo
+                        </div>
+                        <?php
+                       // }elseif($data_product['product_']){
+                        ?>
+                         <div class="badge-tag green">
                             Baru!
                         </div>
-                         <div class="badge-tag cyan">
-                            Baru!
-                        </div>
+                        <?php
+                        //}
+                        ?>
+                        <!-- <div class="badge-tag green">
+                            Stock Habis
+                        </div> -->
+                        <!-- <div class="promo-box">
+                        <span class="on_promo title_shop">STOCK HABIS</span>
+                        </div> -->
+
                     </div>
                     <div class="thumbnail box-shadow" style="min-height: 350px; margin: 0 10px 10px 10px; padding: 10px;">
                         <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>">
@@ -303,14 +317,15 @@
 
                 <p class="lead text-center"><b>Busana Muslim &amp; Hijab</b></p>
                 <ul class="nav nav-pills nav-justified">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atasan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dress Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Blazer Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cardigan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rok Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Celana Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Kerudung Hijab</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Set Busana Muslim</a></li>
+                    <?php
+                        $sql_category="SELECT * FROM category  ORDER BY category_id DESC LIMIT 8";
+                        $result_category=mysql_query($sql_category);
+                        while($data_category=mysql_fetch_array($result_category)){
+                    ?>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                    <?php
+                    }
+                    ?>
                 </ul>
 
             </div>
@@ -336,4 +351,5 @@
                         Pesanan &raquo;</a></li>
         </ul>
     </div>
+    
 </div>

@@ -271,15 +271,17 @@
 
                 <p class="lead text-center"><b>Busana Muslim &amp; Hijab</b></p>
                 <ul class="nav nav-pills nav-justified">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atasan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dress Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Blazer Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cardigan Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rok Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Celana Muslim</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Kerudung Hijab</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Set Busana Muslim</a></li>
+                    <?php
+                        $sql_category="SELECT * FROM category  ORDER BY category_id DESC LIMIT 8";
+                        $result_category=mysql_query($sql_category);
+                        while($data_category=mysql_fetch_array($result_category)){
+                    ?>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                    <?php
+                    }
+                    ?>
                 </ul>
+
 
             </div>
         </div>

@@ -34,10 +34,10 @@ elseif($_GET['mod']=='product-detail'){
 	$prod=mysql_query("SELECT * FROM product WHERE product_id='$_GET[id]'");
 	$p=mysql_fetch_array($prod);
 	
-	$proKat=mysql_query("SELECT * FROM kategori_produk WHERE id_kategori=$p[id_kategori]");
+	$proKat=mysql_query("SELECT * FROM category WHERE category_id=$p[category_id]");
 	$pK = mysql_fetch_array($proKat);
-	$katLink = "<a href='$pK[id_kategori]-kategori-$pK[kategori_seo]'>$pK[nama_kategori]</a>";
+	$katLink = "<a href='$pK[category_id]-kategori-$pK[category_seo]'>$pK[category_name]</a>";
 	
-	$breadcumb = '<div class="bCumb _capitalize"> Kategori &raquo; '.$katLink.' &raquo; '.$p['nama_produk'] .'</div>';
+	$breadcumb = '<div class="bCumb _capitalize"> Kategori &raquo; '.$katLink.' &raquo; '.$p['product_name'] .'</div>';
 }
 
