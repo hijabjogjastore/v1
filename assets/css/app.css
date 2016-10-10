@@ -299,6 +299,8 @@ only screen and (max-width:767px) {
 }
 
 @media (min-width:300px) {
+
+
     h1.featurette-heading {
         font-size: 20px
     }
@@ -322,6 +324,37 @@ only screen and (max-width:767px) {
     .badge-tag {
         padding: .4em
     }
+    .promo-box {
+        height: 429px;
+        right: -247px;
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        width: 296px;
+    }
+    .promo-box span.on_promo {
+        background: red;
+        color: #FFF;
+        display: block;
+        left: -228px;
+        font-size: 2em;
+        padding: 7px 0;
+        position: relative;
+        text-align: center;
+        top: 138px;
+        -webkit-transform: rotate(55deg);
+        -moz-transform: rotate(55deg);
+        -ms-transform: rotate(55deg);
+        -o-transform: rotate(55deg);
+        transform: rotate(55deg);
+        width: 756px;
+        z-index: 2;
+        text-transform: uppercase;
+        border-bottom: 2px solid #FFF;
+    }
+
+
 }
 
 @media (min-width:768px) {
@@ -391,6 +424,37 @@ only screen and (max-width:767px) {
     .discount-text {
         font-size: 24px
     }
+    .promo-box {
+    height: 534px;
+    right: -277px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: 370px;
+}
+
+
+.promo-box span.on_promo {
+    background: red;
+    color: #FFF;
+    display: block;
+    left: -170px;
+    font-size: 2em;
+    padding: 7px 0;
+    position: relative;
+    text-align: center;
+    top: 225px;
+    -webkit-transform: rotate(55deg);
+    -moz-transform: rotate(55deg);
+    -ms-transform: rotate(55deg);
+    -o-transform: rotate(55deg);
+    transform: rotate(55deg);
+    width: 756px;
+    z-index: 2;
+    text-transform: uppercase;
+    border-bottom: 2px solid #FFF;
+}
 }
 
 .left-menu li.dropdown.active,
@@ -567,35 +631,6 @@ button.close {
 
 
 
-.promo-box {
-    height: 100px;
-    right: -20px;
-    overflow: hidden;
-    position: absolute;
-    text-align: center;
-    top: -5px;
-    width: 100px;
-}
 
-.promo-box span.on_promo {
-    background: green;
-    color: #FFF;
-    display: block;
-    left: -9px;
-    font-size: 1em;
-    padding: 5px 0;
-    position: relative;
-    text-align: center;
-    top: 25px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    width: 200px;
-    z-index: 2;
-    text-transform: uppercase;
-    border-bottom: 2px solid #1CFF00;
-}
 
 /*# sourceMappingURL=app.min.css.map */

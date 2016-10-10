@@ -167,9 +167,9 @@
                         <!-- <div class="badge-tag green">
                             Stock Habis
                         </div> -->
-                        <!-- <div class="promo-box">
-                        <span class="on_promo title_shop">STOCK HABIS</span>
-                        </div> -->
+                        <div class="promo-box">
+                        <span class="on_promo title_shop">SOLD OUT</span>
+                        </div>
 
                     </div>
                     <div class="thumbnail box-shadow" style="min-height: 350px; margin: 0 10px 10px 10px; padding: 10px;">

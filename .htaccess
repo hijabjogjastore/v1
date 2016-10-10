@@ -14,8 +14,6 @@ RewriteRule ^product-sold-out.html$ media.php?mod=product-sold-out [L]
 RewriteRule ^product-ready-stock.html$ media.php?mod=product-ready-stock [L]
 RewriteRule ^product-all.html$ media.php?mod=product-all [L]
 
-
-
 RewriteRule ^product-page-(.*)\.html$ media.php?mod=product&halaman=$1 [L]
 RewriteRule ^product-terlaris-page-(.*)\.html$ media.php?mod=product-terlaris&halaman=$1 [L]
 RewriteRule ^product-promo-page-(.*)\.html$ media.php?mod=product-promo&halaman=$1 [L]
