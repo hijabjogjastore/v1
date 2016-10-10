@@ -326,7 +326,66 @@ only screen and (max-width:767px) {
     }
     .promo-box {
         height: 429px;
-        right: -247px;
+        right: -249px;
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        width: 296px;
+    }
+    .promo-box span.on_promo {
+        background: red;
+        color: #FFF;
+        display: block;
+        left: -228px;
+        font-size: 2em;
+        padding: 7px 0;
+        position: relative;
+        text-align: center;
+        top: 138px;
+        -webkit-transform: rotate(55deg);
+        -moz-transform: rotate(55deg);
+        -ms-transform: rotate(55deg);
+        -o-transform: rotate(55deg);
+        transform: rotate(55deg);
+        width: 756px;
+        z-index: 2;
+        text-transform: uppercase;
+        border-bottom: 2px solid #FFF;
+    }
+
+
+}
+
+@media (min-width:360px) {
+
+
+    h1.featurette-heading {
+        font-size: 20px
+    }
+    h2.featurette-heading {
+        font-size: 14px;
+        margin-bottom: 20px
+    }
+    input.input-big {
+        font-size: 18px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        height: 50px
+    }
+    .badge-tag,
+    .discount-text {
+        font-size: 14px
+    }
+    .discount {
+        border-width: 21px
+    }
+    .badge-tag {
+        padding: .4em
+    }
+    .promo-box {
+        height: 429px;
+        right: -278px;
         overflow: hidden;
         position: absolute;
         text-align: center;

@@ -90,7 +90,7 @@
                 <div class="col-xs-3 col-sm-3 col-md-3 col-inspiration">
                     <div class="thumb-inspiration">
                         <div class="thumbnail thumb-content">
-                            <a href="" onclick="#">
+                            <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onclick="#">
                                 <img src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" style="object-fit: cover;" />
                             </a>
                         </div>
@@ -167,9 +167,15 @@
                         <!-- <div class="badge-tag green">
                             Stock Habis
                         </div> -->
+                        <?php
+                        if($data_product['product_sold_out']=='Y'){
+                        ?>
                         <div class="promo-box">
                         <span class="on_promo title_shop">SOLD OUT</span>
                         </div>
+                        <?php
+                        }
+                        ?>
 
                     </div>
                     <div class="thumbnail box-shadow" style="min-height: 350px; margin: 0 10px 10px 10px; padding: 10px;">
@@ -245,16 +251,25 @@
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                     <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
-                        <a href="#" onClick="#">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
                         <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Aida Pashmina">Aida Pashm...</h4>
-
-                                <h4 class="price text-center">Rp55,000<br><strike class="text-muted"><small>Rp99,000</small></strike></h4>
-                            </a>
-                        </div>
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
+                        </a>
+                    </div>
                     </div>
                 </div>
                 <?php
@@ -285,18 +300,29 @@
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                     <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
-                        <a href="#" onClick="#">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
 
-                        <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Sisterfields Tunik">Sisterfiel...</h4>
+                       
+                  <div class="caption">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
+                        </a>
+                    </div>
 
-                                <h4 class="price text-center">Rp99,000<br><strike class="text-muted"><small>Rp149,000</small></strike></h4>
-                            </a>
 
-                        </div>
                     </div>
                 </div>
                 <?php
@@ -322,7 +348,8 @@
                         $result_category=mysql_query($sql_category);
                         while($data_category=mysql_fetch_array($result_category)){
                     ?>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="">
+                        <?php echo $data_category['category_name']; ?></a></li>
                     <?php
                     }
                     ?>

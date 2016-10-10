@@ -6,6 +6,9 @@
         $result_product_detail=mysql_query($product_detail);
         $data_product_detail=mysql_fetch_array($result_product_detail);
         $linkBeli   = 'addcart&idp='.$data_product_detail['product_id'];
+        $disc        = ($data_product_detail['product_discount']/100)*$data_product_detail['product_price'];
+        $hargadisc   = number_format(($data_product_detail['product_price']-$disc),0,",",".");
+        $harga       = format_rupiah($data_product_detail['product_price']);
         ?>
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-3">
@@ -17,7 +20,7 @@
                 $result_brand=mysql_query($sql_brand);
                 $data_brand=mysql_fetch_array($result_brand);
                 ?>
-                <p class="brand"><a href="#"><?php echo $data_brand['brand_name']; ?></a></p>
+                <p class="brand"><a href="category-brand-<?php echo $data_brand[brand_id]."-".$data_brand[brand_seo].".html";?>"><?php echo $data_brand['brand_name']; ?></a></p>
             </div>
         </div>
 
@@ -27,27 +30,52 @@
             <div class="col-md-offset-3 col-md-6">
                 <div class="thumbnail box-shadow" style="padding: 10px;">
                     <div class="container-badge">
+                        <?php
+                        if($data_product_detail['product_discount'] == 0){
+                        }else{
+                        ?>
                         <div class="badge-tag">
-                            33%
+                            <?php echo $data_product_detail['product_discount']; ?>%
                         </div>
+                        <?php
+                        }
+                        ?>
                         <div class="badge-tag orange">
                             Baru!
                         </div>
+                        <?php
+                        if($data_product_detail['product_pre_order']=='Y'){
+                        ?>
                         <div class="badge-tag cyan">
-                            PO
+                            Pre Order
                         </div>
+                        <?php
+                        }else{
+
+                        }
+                        ?>
                     </div>
                     <img class="featurette-image img-responsive" width="100%" src="assets/images/product/<?php echo $data_product_detail['product_images']; ?>" alt="Spring Floral Maxi">
                     <p class="product-price lead featurette-divider">
                         Harga Khusus PO
-                        <br>Hanya Rp. 100.000
-                        <br><strike class="text-muted small">Rp. 149.000</strike>
+                        <?php
+                        if($data_product_detail['product_discount'] == '0'){
+                        ?>
+                         <br>Hanya Rp. <?php echo $harga; ?>
+                        <?php
+                        }else{
+                        ?>
+                        <br>Hanya Rp. <?php echo $harga; ?>
+                        <br><strike class="text-muted small">Rp. <?php echo $hargadisc; ?></strike>
+                        <?php
+                        }
+                        ?>
                     </p>
                     <p class="lead"></p>
                     <ul class="list-unstyled">
-                        <li><strong>Warna:</strong> Pink </li>
+                        <li><strong>Warna:</strong> <?php echo $data_product_detail['product_color']; ?> </li>
                         <li>
-                            <strong>Bahan:</strong> Printed Premium Crepe </li>
+                            <strong>Bahan:</strong> <?php echo $data_product_detail['product_bahan']; ?> </li>
                     </ul>
                     <ul class="list-unstyled">
                     </ul>
@@ -123,7 +151,7 @@
 
         <div class="row featurette">
             <div class="col-md-12">
-                <h1 class="product-name text-center"><span style="font-size:0.6em;font-style:italic;">Spring Floral Maxi</span></h1>
+                <h1 class="product-name text-center"><span style="font-size:0.6em;font-style:italic;"><?php echo $data_product_detail['product_name']; ?></span></h1>
                 <p class="text-muted text-center small">Kode: <?php echo $data_product_detail['product_code']; ?>
                     <br><?php echo $data_brand['brand_name']; ?></p>
                 <p class="brand text-center"><a href="#">Koleksi <?php echo $data_brand['brand_name'] ?> lainnya &raquo;</a></p>
@@ -143,7 +171,7 @@
                 $result_category=mysql_query($sql_category);
                 while($data_category=mysql_fetch_array($result_category)){
                 ?>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href=""><?php echo $data_category['category_name']; ?></a></li>
                 <?php
                 }
                 ?>
@@ -159,18 +187,33 @@
             </div>
 
             <?php
-            for($i=0;$i<12;$i++){
+            $sql_product="select * from product limit 12";
+            $result_product=mysql_query($sql_product);
+            while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
+            //for($i=0;$i<12;$i++){
             ?>
             <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                 <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
-                    <a href="#" onClick="#">
-                        <img width="275px" src="assets/images/hijaber3.jpg" border="0" class="img-responsive" />
+                    <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                        <img width="275px" src="assets/images/product/<?php echo $data_product['product_images']; ?>" border="0" class="img-responsive" />
                     </a>
                     <div class="caption">
                         <a href="#" onClick="#">
-                            <h4 class="product-name text-center small" title="Leona Turban">Leona Turban</h4>
-
-                            <h4 class="price text-center">Rp25,000<br><strike class="text-muted"><small>Rp50,000</small></strike></h4>
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
                         </a>
                     </div>
                 </div>

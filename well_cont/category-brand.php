@@ -78,7 +78,12 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
-                <h1 class="featurette-heading">Product Terlaris</h1>
+                <?php
+                $sql_brand="select * from brand where brand_id='".$_GET['id']."'";
+                $result_brand=mysql_query($sql_brand);
+                $data_brand=mysql_fetch_array($result_brand);
+                ?>
+                <h1 class="featurette-heading">Category Brand  <?php echo $data_brand['brand_name']; ?></h1>
                 <p>Setiap hari koleksi <strong>Baju Wanita Terbaru</strong> dari <strong>Hijab</strong>, <strong>Dress</strong>, <strong>Kardigan Rajut</strong>, <strong>Blazer</strong>, <strong>Atasan</strong>, sampai <strong>Aksesoris</strong>.</p>
 
             </div>
@@ -95,10 +100,11 @@
         <div class="row">
             <!-- row1 start -->
             <?php
-            $p      = new Paging_terlaris;
+            $p      = new Paging_brand;
             $batas  = 9;
             $posisi = $p->cariPosisi($batas);
-            $sql_product="select * from product where product_terlaris='Y' ORDER BY product_id DESC LIMIT $posisi,$batas";
+            $id=$_GET['id'];
+            $sql_product="select * from product where brand_id='$id' ORDER BY product_id DESC LIMIT $posisi,$batas";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
             $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
@@ -163,7 +169,7 @@
         </div>
         <!-- row end -->
         <?php
-        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product where product_terlaris='Y' ORDER BY product_id ASC"));
+        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product where brand_id='$_GET[id]' ORDER BY product_id ASC"));
         $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
         $linkHalaman = $p->navHalaman($_GET['halaman'], $jmlhalaman);
           //echo "<div class='rBox'> <br /><div class='paging'>$linkHalaman <br /><br /></div></div>";
@@ -199,25 +205,16 @@
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                     <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
-                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                        <a href="#" onClick="#">
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
                         <div class="caption">
-                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
-                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
-                            <?php
-                            if($data_product['product_discount'] == '0'){
-                            ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
-                            <?php
-                            }else{
-                            ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
-                            <?php
-                            }
-                            ?>
-                        </a>
-                    </div>
+                            <a href="#" onClick="#">
+                                <h4 class="product-name text-center small" title="Aida Pashmina">Aida Pashm...</h4>
+
+                                <h4 class="price text-center">Rp55,000<br><strike class="text-muted"><small>Rp99,000</small></strike></h4>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <?php
@@ -248,26 +245,18 @@
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                     <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
-                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                        <a href="#" onClick="#">
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
 
                         <div class="caption">
-                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
-                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
-                            <?php
-                            if($data_product['product_discount'] == '0'){
-                            ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
-                            <?php
-                            }else{
-                            ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
-                            <?php
-                            }
-                            ?>
-                        </a>
-                    </div>
+                            <a href="#" onClick="#">
+                                <h4 class="product-name text-center small" title="Sisterfields Tunik">Sisterfiel...</h4>
+
+                                <h4 class="price text-center">Rp99,000<br><strike class="text-muted"><small>Rp149,000</small></strike></h4>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
                 <?php
@@ -286,19 +275,18 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <p class="lead text-center"><b>Busana Muslim &amp; Hijab</b></p>
+                <p class="lead text-center"><b>Category Hijab</b></p>
                 <ul class="nav nav-pills nav-justified">
-                    <?php
+                   <?php
                         $sql_category="SELECT * FROM category  ORDER BY category_id DESC LIMIT 8";
                         $result_category=mysql_query($sql_category);
                         while($data_category=mysql_fetch_array($result_category)){
                     ?>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atasan Muslim</a></li>
                     <?php
                     }
                     ?>
                 </ul>
-
 
             </div>
         </div>

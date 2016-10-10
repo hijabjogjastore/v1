@@ -1,4 +1,4 @@
-http://berita-bca.liputan6.com/read/2193737/kisah-sukses-feny-mustafa-bangun-brand-shafira-dan-zoya
+﻿http://berita-bca.liputan6.com/read/2193737/kisah-sukses-feny-mustafa-bangun-brand-shafira-dan-zoya
 https://www.instagram.com/vanillahijab/?hl=en
 https://www.instagram.com/kerudungelita/
 desain template.
@@ -36,6 +36,8 @@ desain template.
    //include("well_cont/checkout-confirm.php"); //OK
    //include("well_cont/form-lacak-pesanan.php"); // OK
    //include("well_cont/hasil-lacak-pesanan.php"); //OK
+OKEKKEKEKE
+
 
 			www.gazalashop.com
 

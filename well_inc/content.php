@@ -16,7 +16,10 @@ if($_GET['mod']=='home'){
 }elseif ($_GET['mod']=='checkout-tanks') {
 	include("well_cont/checkout-tanks.php");
 }
-
+//Category brand
+elseif ($_GET['mod']=='category-brand') {
+	include("well_cont/category-brand.php");
+}
 //di bawah HOME
 elseif ($_GET['mod']=='product-terlaris') {
 	include("well_cont/product-terlaris.php");
