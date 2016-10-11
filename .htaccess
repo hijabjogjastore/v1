@@ -22,6 +22,8 @@ RewriteRule ^product-sold-out-page-(.*)\.html$ media.php?mod=product-sold-out&ha
 RewriteRule ^product-ready-stock-page-(.*)\.html$ media.php?mod=product-ready-stock&halaman=$1 [L]
 RewriteRule ^product-all-page-(.*)\.html$ media.php?mod=product-all&halaman=$1 [L]
 
+RewriteRule ^category-brand-(.*)\.html$ media.php?mod=category-brand&id=$1 [L]
+RewriteRule ^category-brand-page(.*)\.html$ media.php?mod=category-brand&halaman=$1 [L]
 
 RewriteRule ^details-product-(.*)\.html$ media.php?mod=product-detail&id=$1 [L]
 RewriteRule ^konfirmasi.html$ media.php?mod=konfirmasi [L]

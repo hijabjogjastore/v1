@@ -79,7 +79,7 @@ elseif ($_GET['mod']=='checkout-tanks') {
 
 elseif($_GET['mod']=='form_transaksi')
 {
-	$kar1=strstr($_POST['email'], "@");
+/*	$kar1=strstr($_POST['email'], "@");
 	$kar2=strstr($_POST['email'], ".");
 
 	if (empty($_POST['nama']) || empty($_POST['alamat']) || empty($_POST['telpon']) || empty($_POST['email'])){
@@ -100,7 +100,7 @@ elseif($_GET['mod']=='form_transaksi')
 		window.location(history.back(-1))</script>";
 	}
 	else
-	{
+	{*/
 		$idkota = cleanInput($_POST['kota']);
 
 		// fungsi untuk mendapatkan isi keranjang belanja
@@ -118,10 +118,13 @@ elseif($_GET['mod']=='form_transaksi')
 
 		$tgl_skrg = date("Ymd");
 		$jam_skrg = date("H:i:s");
-		
+		$nama=htmlentities($_POST['nama']);
+		$alamat=htmlentities($_POST['alamat']);
+		$telepon=htmlentities($_POST['telpon']);
+		$email=htmlentities($_POST['email']);
 		// simpan data pemesanan 
 		mysql_query("INSERT INTO orders(nama_kustomer, alamat, id_kota,telpon, email, tgl_order, jam_order) 
-					 VALUES('$_POST[nama]','$_POST[alamat]','$idkota', '$_POST[telpon]','$_POST[email]','$tgl_skrg','$jam_skrg')");
+					 VALUES('$nama','$alamat','$idkota', '$telpon','$email','$tgl_skrg','$jam_skrg')");
 		  
 		// mendapatkan nomor orders
 		$id_orders=mysql_insert_id();
@@ -143,34 +146,14 @@ elseif($_GET['mod']=='form_transaksi')
 		}
 		//get nama kota
 		$kota = mysql_fetch_array(mysql_query("SELECT nama_kota FROM kota WHERE id_kota='$idkota'"));
-/*		echo "<h1 class='hTitle _uppercase _big'>Proses Transaksi Selesai</h1>
-      <p>Data pemesan beserta ordernya adalah sebagai berikut: </p>
-      <table class='prodCart' width='100%'>
-      <tr><td>Nama           </td><td> : <b>$_POST[nama]</b> </td></tr>
-      <tr><td>Alamat Lengkap </td><td> : $_POST[alamat] </td></tr>
-      <tr><td>Telpon         </td><td> : $_POST[telpon] </td></tr>
-      <tr><td>E-mail         </td><td> : $_POST[email] </td></tr>";*/
 		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$emailErr = "Invalid email format"; 
 		}
 		?>
-      <?php
-/*	  echo "<tr><td>Kota Tujuan    </td><td> : $kota[nama_kota] </td></tr>
-      </table>
-      <p>Nomor Order: <b>$id_orders</b></p><br />";*/
-      
+      <?php 
 		$daftarproduk=mysql_query("SELECT * FROM orders_detail,product
                                  WHERE orders_detail.product_id=product.product_id 
                                  AND id_orders='$id_orders'");
-                                 
-/*		echo "<table class='prodCart' width='100%' border='0'>
-				<tr align=left height=23>
-					<th>No.</th>
-					<th>Nama Produk</th>
-					<th>Qty</th>
-					<th>Harga</th>
-					<th>Sub Total</th>
-				</tr>";*/
 		  
 		$pesan="Terimakasih telah melakukan pemesanan online di toko kami<br /><br />  
 				Nama: $_POST[nama] <br />
@@ -197,23 +180,10 @@ elseif($_GET['mod']=='form_transaksi')
 		   $subtotal_rp = format_rupiah($subtotal);    
 		   $total_rp    = format_rupiah($total);    
 		   $harga       = format_rupiah($d['product_price']);
-		   
-		   //get opsi atribut
-		   if($d['id_atribut']>0)
-		   {
-		   		$atrib = mysql_fetch_array(mysql_query("SELECT * FROM produk_atribut WHERE id_atribut='$d[id_atribut]'"));
-		   		$atribut = " - opsi warna: $atrib[nama_atribut]";
-		   } else { $atribut = ""; }
-		   
+		    
 			//get ongkos kirim
 			$ongkir = mysql_query("SELECT * FROM orders,kota WHERE orders.id_orders='$d[id_orders]' AND kota.id_kota=orders.id_kota");
 			$o = mysql_fetch_array($ongkir);
-/*	  	   
-		   echo "<tr>
-			<td class='center'>$no.</td>
-			<td>$d[nama_produk] $atribut</td>
-			<td class='center'>$d[jumlah]</td>
-			<td>Rp. $harga,-</td><td align='right'>Rp. $subtotal_rp,-</td></tr>";*/
 			
 			$pesan.="<tr>
 			<td class='center'>$no.</td>
@@ -249,19 +219,7 @@ elseif($_GET['mod']=='form_transaksi')
 		mail($_POST['email'],$subjek,$pesan,$dari);
 		// Kirim email ke pengelola toko online
 		mail("hijabjogjastore@gmail.com",$subjek,$pesan,$dari);
-		
-/*		echo "<tr>
-				<td colspan=5 align=right>Total : Rp. </td>
-				<td align=right><b>$total_rp</b></td></tr>   
-			  <tr>
-			  <tr>
-				<td colspan='5' align='right'>Ongkos kirim : Rp. </td>
-				<td align=right><b>$ongkos_rp</b></td>
-				</tr>  
-				<td colspan=5 align=right>Grand Total : Rp. </td><td align=right><b>$grandtotal_rp</b></td></tr>
-			  </table>";
-		echo "<br /><p>- Data order sudah terkirim ke email Anda ($_POST[email]). <br />
-		- Apabila Anda tidak melakukan pembayaran dalam 3 hari, maka data order Anda akan terhapus (transaksi batal)</p><br />      "; */
+
 		?>
 <div id="sb-site">
     <div class="overlay-background"></div>
@@ -296,6 +254,6 @@ elseif($_GET['mod']=='form_transaksi')
     </div>
 </div>
 		<?php
-	}
+//	}
 }
 ?>
