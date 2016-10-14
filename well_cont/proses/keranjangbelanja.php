@@ -85,6 +85,7 @@ switch($_GET['step'])
         <div class="text-right" style="display: inline-block;width: 40%"><b>Jumlah</b></div>
         <div style="height:10px;"></div>
 
+
         <style>
             li.media {
                 padding-top: 1em;
@@ -96,6 +97,8 @@ switch($_GET['step'])
                 /* border-bottom: 1px solid #e3e3e3; */
             }
         </style>
+
+
         <?php
         $no=1;
         while($r=mysql_fetch_array($sql))
@@ -124,17 +127,28 @@ switch($_GET['step'])
                         <p>
                             <!-- price -->
                             <br/>
+
+                            <?php
+                            if($r['product_discount'] == '0'){
+                            ?>
+                             <strong class="text-danger">Rp. <?php echo $harga; ?></strong>
+                            <?php
+                            }else{
+                            ?>
                             <strong class="text-danger">Rp. <?php echo $hargadisc; ?></strong>
 
                             <span class="text-muted">
-
-          
                                     <br/>
                                     <s title="Diskon 33%">
                                     Rp. <?php echo $harga; ?>   
                                     </s>
 
-                                                        </span>
+                            </span>
+                            <?php
+                            }
+                            ?>
+
+
                         </p>
                     </div>
                     <div style="display:inline-block; vertical-align: top; width: 30%; text-align:right;">
@@ -175,6 +189,7 @@ switch($_GET['step'])
 
             </tbody>
         </table>
+
         <div class="row">
             <div class="col-sm-12">
                 <a href="cart-step1" class="btn btn-warning btn-lg btn-block pull-right">Lanjut <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -197,19 +212,34 @@ switch($_GET['step'])
                 <h4 class="text-center"><mark><small>Stok Tinggal Sedikit Lho!</small></mark></h4>
             </div>
         <?php
-        for($i=0;$i<12;$i++){
+            $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
+            $result_product=mysql_query($sql_product);
+            while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
+        //for($i=0;$i<12;$i++){
         ?>
             <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
                 <div class="thumbnail" style="border: none; min-height: 268px; margin-bottom:0px; padding:0px;">
                     <a href="#" onClick="">
-                        <img width="275px" src="assets/images/hijaber3.jpg" border="0" class="img-responsive" />
+                        <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                     </a>
 
-                    <div class="caption">
-                        <a href="#" onClick="#">
-                            <h4 class="product-name text-center small" title="Aisya Pashmina">Aisya Pash...</h4>
-
-                            <h4 class="price text-center">Rp69,000<br><small>&nbsp;</small></h4>
+                      <div class="caption">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
                         </a>
                     </div>
                 </div>

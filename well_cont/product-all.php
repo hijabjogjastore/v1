@@ -195,6 +195,9 @@
              $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -203,11 +206,29 @@
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
                         <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Aida Pashmina">Aida Pashm...</h4>
+                            <a href="#">
 
-                                <h4 class="price text-center">Rp55,000<br><strike class="text-muted"><small>Rp99,000</small></strike></h4>
+                                <h4 class="product-name text-center small" title="Metthy Top"><?php echo $data_product['product_name']; ?></h4>
+                                <?php
+                                $sql_category="select * from brand where brand_id='".$data_product['brand_id']."'";
+                                $result_category=mysql_query($sql_category);
+                                $data_category=mysql_fetch_array($result_category);
+                                ?>
+                                <h4 class="merchant-name text-center small" title="Giggle Note"><?php echo $data_category['brand_name']; ?></h4>
+                                <?php
+                                if($data_product['product_discount'] == 0){
+                                ?>
+                                       <h4 class="price text-center">Rp<?php echo $harga; ?> </h4>
+                                <?php
+                                    }else{
+                                ?>
+                                       <h4 class="price text-center">Rp<?php echo $hargadisc; ?> <strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
+                                <?php
+                                }
+                                ?>
+                              
                             </a>
+
                         </div>
                     </div>
                 </div>
@@ -235,6 +256,9 @@
             $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -244,10 +268,27 @@
                         </a>
 
                         <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Sisterfields Tunik">Sisterfiel...</h4>
+                            <a href="#">
 
-                                <h4 class="price text-center">Rp99,000<br><strike class="text-muted"><small>Rp149,000</small></strike></h4>
+                                <h4 class="product-name text-center small" title="Metthy Top"><?php echo $data_product['product_name']; ?></h4>
+                                <?php
+                                $sql_category="select * from brand where brand_id='".$data_product['brand_id']."'";
+                                $result_category=mysql_query($sql_category);
+                                $data_category=mysql_fetch_array($result_category);
+                                ?>
+                                <h4 class="merchant-name text-center small" title="Giggle Note"><?php echo $data_category['brand_name']; ?></h4>
+                                <?php
+                                if($data_product['product_discount'] == 0){
+                                ?>
+                                       <h4 class="price text-center">Rp<?php echo $harga; ?> </h4>
+                                <?php
+                                    }else{
+                                ?>
+                                       <h4 class="price text-center">Rp<?php echo $hargadisc; ?> <strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
+                                <?php
+                                }
+                                ?>
+                              
                             </a>
 
                         </div>
@@ -276,6 +317,7 @@
                         $sql_category="SELECT * FROM category  ORDER BY category_id DESC LIMIT 8";
                         $result_category=mysql_query($sql_category);
                         while($data_category=mysql_fetch_array($result_category)){
+          
                     ?>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
                     <?php

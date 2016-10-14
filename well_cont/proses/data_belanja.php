@@ -27,7 +27,7 @@
 		$no=1;
 		while($r=mysql_fetch_array($sql))
 		{
-
+			
 			$disc        = ($r['product_discount']/100)*$r['product_price'];
 			$hargadisc   = number_format(($r['product_price']-$disc),0,",",".");
 			$subtotal    = ($r['product_price']-$disc) * $r['product_jumlah'];

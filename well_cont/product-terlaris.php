@@ -212,7 +212,7 @@
                             <?php
                             }else{
                             ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
                             <?php
                             }
                             ?>
@@ -262,7 +262,7 @@
                             <?php
                             }else{
                             ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
                             <?php
                             }
                             ?>

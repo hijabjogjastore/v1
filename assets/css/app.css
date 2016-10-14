@@ -325,34 +325,36 @@ only screen and (max-width:767px) {
         padding: .4em
     }
     .promo-box {
-        height: 429px;
-        right: -249px;
-        overflow: hidden;
-        position: absolute;
-        text-align: center;
-        top: 0px;
-        width: 296px;
-    }
-    .promo-box span.on_promo {
-        background: red;
-        color: #FFF;
-        display: block;
-        left: -228px;
-        font-size: 2em;
-        padding: 7px 0;
-        position: relative;
-        text-align: center;
-        top: 138px;
-        -webkit-transform: rotate(55deg);
-        -moz-transform: rotate(55deg);
-        -ms-transform: rotate(55deg);
-        -o-transform: rotate(55deg);
-        transform: rotate(55deg);
-        width: 756px;
-        z-index: 2;
-        text-transform: uppercase;
-        border-bottom: 2px solid #FFF;
-    }
+   height: 283px;
+right: -247px;
+overflow: hidden;
+position: absolute;
+text-align: center;
+top: -1px;
+width: 184px;
+}
+
+
+.promo-box span.on_promo {
+    background: red;
+    color: #FFF;
+    display: block;
+    left: -111px;
+    font-size: 1em;
+    padding: 7px 0;
+    position: relative;
+    text-align: center;
+    top: 42px;
+    -webkit-transform: rotate(55deg);
+    -moz-transform: rotate(55deg);
+    -ms-transform: rotate(55deg);
+    -o-transform: rotate(55deg);
+    transform: rotate(55deg);
+    width: 493px;
+    z-index: 2;
+    text-transform: uppercase;
+    border-bottom: 2px solid #FFF;
+}
 
 
 }
@@ -383,35 +385,37 @@ only screen and (max-width:767px) {
     .badge-tag {
         padding: .4em
     }
-    .promo-box {
-        height: 429px;
-        right: -278px;
+ .promo-box {
+        height: 275px;
+        right: -288px;
         overflow: hidden;
         position: absolute;
         text-align: center;
-        top: 0px;
-        width: 296px;
-    }
-    .promo-box span.on_promo {
+        top: -1px;
+        width: 197px;
+}
+
+
+.promo-box span.on_promo {
         background: red;
         color: #FFF;
         display: block;
-        left: -228px;
-        font-size: 2em;
+        left: -80px;
+        font-size: 1em;
         padding: 7px 0;
         position: relative;
         text-align: center;
-        top: 138px;
+        top: 24px;
         -webkit-transform: rotate(55deg);
         -moz-transform: rotate(55deg);
         -ms-transform: rotate(55deg);
         -o-transform: rotate(55deg);
         transform: rotate(55deg);
-        width: 756px;
+        width: 487px;
         z-index: 2;
         text-transform: uppercase;
         border-bottom: 2px solid #FFF;
-    }
+}
 
 
 }
@@ -484,35 +488,35 @@ only screen and (max-width:767px) {
         font-size: 24px
     }
     .promo-box {
-    height: 534px;
-    right: -277px;
-    overflow: hidden;
-    position: absolute;
-    text-align: center;
-    top: 0px;
-    width: 370px;
+        height: 141px;
+        right: -279px;
+        overflow: hidden;
+        position: absolute;
+        text-align: center;
+        top: -1px;
+        width: 113px;
 }
 
 
 .promo-box span.on_promo {
-    background: red;
-    color: #FFF;
-    display: block;
-    left: -170px;
-    font-size: 2em;
-    padding: 7px 0;
-    position: relative;
-    text-align: center;
-    top: 225px;
-    -webkit-transform: rotate(55deg);
-    -moz-transform: rotate(55deg);
-    -ms-transform: rotate(55deg);
-    -o-transform: rotate(55deg);
-    transform: rotate(55deg);
-    width: 756px;
-    z-index: 2;
-    text-transform: uppercase;
-    border-bottom: 2px solid #FFF;
+        background: red;
+        color: #FFF;
+        display: block;
+        left: -170px;
+        font-size: 1.3em;
+        padding: 7px 0;
+        position: relative;
+        text-align: center;
+        top: 29px;
+        -webkit-transform: rotate(55deg);
+        -moz-transform: rotate(55deg);
+        -ms-transform: rotate(55deg);
+        -o-transform: rotate(55deg);
+        transform: rotate(55deg);
+        width: 486px;
+        z-index: 2;
+        text-transform: uppercase;
+        border-bottom: 2px solid #FFF;
 }
 }
 

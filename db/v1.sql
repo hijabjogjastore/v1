@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 11:53 AM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: Oct 14, 2016 at 03:31 AM
+-- Server version: 10.1.8-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,24 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `v2`
+-- Database: `v1`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `album`
---
-
-CREATE TABLE IF NOT EXISTS `album` (
-  `id_album` int(11) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
-  `tanggal` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -39,11 +26,11 @@ CREATE TABLE IF NOT EXISTS `album` (
 -- Table structure for table `brand`
 --
 
-CREATE TABLE IF NOT EXISTS `brand` (
+CREATE TABLE `brand` (
   `brand_id` int(11) NOT NULL,
   `brand_name` varchar(250) DEFAULT NULL,
   `brand_seo` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brand`
@@ -61,11 +48,11 @@ INSERT INTO `brand` (`brand_id`, `brand_name`, `brand_seo`) VALUES
 -- Table structure for table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
+CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(250) DEFAULT NULL,
   `category_seo` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
@@ -82,7 +69,7 @@ INSERT INTO `category` (`category_id`, `category_name`, `category_seo`) VALUES
 -- Table structure for table `galeri`
 --
 
-CREATE TABLE IF NOT EXISTS `galeri` (
+CREATE TABLE `galeri` (
   `id_galeri` int(11) NOT NULL,
   `id_album` int(11) NOT NULL,
   `judul` varchar(100) NOT NULL,
@@ -93,37 +80,14 @@ CREATE TABLE IF NOT EXISTS `galeri` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
---
-
-CREATE TABLE IF NOT EXISTS `kategori` (
-  `id_kategori` int(11) NOT NULL,
-  `nama` varchar(128) NOT NULL,
-  `seo` varchar(128) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kategori`
---
-
-INSERT INTO `kategori` (`id_kategori`, `nama`, `seo`, `aktif`) VALUES
-(27, 'BAJU RENANG MUSLIMAH', 'baju-renang-muslimah', 'Y'),
-(28, 'PLATINUM COSMETICS', 'platinum-cosmetics', 'Y'),
-(29, 'DIAMOND COSMETICS', 'diamond-cosmetics', 'Y'),
-(31, 'BUMIL BUSUI CREAM', 'bumil-busui-cream', 'Y');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kota`
 --
 
-CREATE TABLE IF NOT EXISTS `kota` (
+CREATE TABLE `kota` (
   `id_kota` int(3) NOT NULL,
   `nama_kota` varchar(100) NOT NULL,
   `ongkos_kirim` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kota`
@@ -161,14 +125,14 @@ INSERT INTO `kota` (`id_kota`, `nama_kota`, `ongkos_kirim`) VALUES
 -- Table structure for table `mainmenu`
 --
 
-CREATE TABLE IF NOT EXISTS `mainmenu` (
+CREATE TABLE `mainmenu` (
   `id_main` int(5) NOT NULL,
   `urutan` int(1) NOT NULL,
   `id_parent` int(11) NOT NULL DEFAULT '0',
   `nama_menu` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `link` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `aktif` enum('Y','N') NOT NULL DEFAULT 'Y'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mainmenu`
@@ -190,7 +154,7 @@ INSERT INTO `mainmenu` (`id_main`, `urutan`, `id_parent`, `nama_menu`, `link`, `
 -- Table structure for table `modul`
 --
 
-CREATE TABLE IF NOT EXISTS `modul` (
+CREATE TABLE `modul` (
   `id_modul` int(5) NOT NULL,
   `nama_modul` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `link` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -199,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `modul` (
   `status` enum('user','admin') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `aktif` enum('Y','N') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `menu` enum('utama','modul') NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modul`
@@ -232,13 +196,13 @@ INSERT INTO `modul` (`id_modul`, `nama_modul`, `link`, `static_content`, `gambar
 -- Table structure for table `mod_bank`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_bank` (
+CREATE TABLE `mod_bank` (
   `id_bank` int(5) NOT NULL,
   `nama_bank` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `no_rekening` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `pemilik` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `gambar` varchar(150) COLLATE latin1_general_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `mod_bank`
@@ -253,12 +217,12 @@ INSERT INTO `mod_bank` (`id_bank`, `nama_bank`, `no_rekening`, `pemilik`, `gamba
 -- Table structure for table `mod_fb`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_fb` (
+CREATE TABLE `mod_fb` (
   `id` int(2) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `link` varchar(150) NOT NULL,
   `gambar` varchar(150) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_fb`
@@ -274,12 +238,12 @@ INSERT INTO `mod_fb` (`id`, `nama`, `link`, `gambar`) VALUES
 -- Table structure for table `mod_header`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_header` (
+CREATE TABLE `mod_header` (
   `id_slider` int(5) NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `mod_header`
@@ -294,12 +258,12 @@ INSERT INTO `mod_header` (`id_slider`, `judul`, `gambar`, `tgl_posting`) VALUES
 -- Table structure for table `mod_kurir`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_kurir` (
+CREATE TABLE `mod_kurir` (
   `id_kurir` int(11) NOT NULL,
   `nama_kurir` varchar(20) NOT NULL,
   `link` varchar(120) NOT NULL,
   `gambar` varchar(128) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_kurir`
@@ -318,7 +282,7 @@ INSERT INTO `mod_kurir` (`id_kurir`, `nama_kurir`, `link`, `gambar`) VALUES
 -- Table structure for table `mod_page`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_page` (
+CREATE TABLE `mod_page` (
   `id_page` int(11) NOT NULL,
   `judul` varchar(50) DEFAULT NULL,
   `isi` text,
@@ -328,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `mod_page` (
   `extra` text,
   `meta_keyword` varchar(100) DEFAULT NULL,
   `meta_deskripsi` varchar(300) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_page`
@@ -354,13 +318,13 @@ INSERT INTO `mod_page` (`id_page`, `judul`, `isi`, `tgl_posting`, `gambar`, `sta
 -- Table structure for table `mod_slider`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_slider` (
+CREATE TABLE `mod_slider` (
   `id_slider` int(5) NOT NULL,
   `gambar` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tgl_posting` date NOT NULL,
   `judul` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `url` varchar(150) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `mod_slider`
@@ -376,12 +340,12 @@ INSERT INTO `mod_slider` (`id_slider`, `gambar`, `tgl_posting`, `judul`, `url`) 
 -- Table structure for table `mod_sosial`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_sosial` (
+CREATE TABLE `mod_sosial` (
   `id` int(2) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `link` varchar(150) NOT NULL,
   `gambar` varchar(150) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_sosial`
@@ -398,13 +362,13 @@ INSERT INTO `mod_sosial` (`id`, `nama`, `link`, `gambar`) VALUES
 -- Table structure for table `mod_testimoni`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_testimoni` (
+CREATE TABLE `mod_testimoni` (
   `id_testimoni` int(11) NOT NULL,
   `dari` varchar(100) NOT NULL,
   `isi_testimoni` text NOT NULL,
   `tanggal` varchar(100) NOT NULL,
   `gambar` varchar(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_testimoni`
@@ -419,11 +383,11 @@ INSERT INTO `mod_testimoni` (`id_testimoni`, `dari`, `isi_testimoni`, `tanggal`,
 -- Table structure for table `mod_ym`
 --
 
-CREATE TABLE IF NOT EXISTS `mod_ym` (
+CREATE TABLE `mod_ym` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `username` varchar(50) COLLATE latin1_general_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `mod_ym`
@@ -438,7 +402,7 @@ INSERT INTO `mod_ym` (`id`, `nama`, `username`) VALUES
 -- Table structure for table `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
+CREATE TABLE `orders` (
   `id_orders` int(5) NOT NULL,
   `nama_kustomer` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `alamat` text COLLATE latin1_general_ci NOT NULL,
@@ -449,7 +413,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `tgl_order` date NOT NULL,
   `jam_order` time NOT NULL,
   `id_kota` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -459,7 +423,13 @@ INSERT INTO `orders` (`id_orders`, `nama_kustomer`, `alamat`, `telpon`, `email`,
 (106, 'Intan', 'test\r\n', '01982912891', 'intan@yahoo.com', '', 'Baru', '2016-09-13', '02:09:59', 22),
 (107, 'intan Permatasari', 'Indramayu', '019281928', 'intan@yahoo.com', '', 'Baru', '2016-09-13', '02:12:51', 22),
 (108, 'Developer Code Indonesia', 'balikpapan', '001298391219', 'developer@gail.com', '', 'Baru', '2016-09-14', '06:31:25', 22),
-(109, 'Edi Setiawan ', 'Yogyakarta', '01821828', 'edi2992@gmail.com ', '', 'Baru', '2016-09-23', '07:27:12', 7);
+(109, 'Edi Setiawan ', 'Yogyakarta', '01821828', 'edi2992@gmail.com ', '', 'Baru', '2016-09-23', '07:27:12', 7),
+(110, 'Test', 'test', '9230923', 'test@gmail.com', '', 'Baru', '2016-10-10', '23:58:32', 24),
+(111, 'fs', 'asdfas', 'fdsfsd', 'edy_setiawan592@yahoo.com', '', 'Baru', '2016-10-11', '00:55:57', 14),
+(112, 'trwtdweh', 'hello', '27364723728', 'hello@yahoo.com', '', 'Baru', '2016-10-12', '06:31:40', 22),
+(113, '9w839423', 'http://jshdjsdj.ksjdksd/jsdhjsd/sjhdjsd', 'eiudyfueujm', 'djfhbgjfd', '', 'Baru', '2016-10-12', '06:32:04', 22),
+(114, 'egi prawita', 'wwwww@oowoow.dkdkdk.skjhdjsdhjs', '', 'edi2992@gmail.com', '', 'Baru', '2016-10-13', '21:28:27', 21),
+(115, '23423423', 'eeee', '', 'eeee@dddd.ddd', '', 'Baru', '2016-10-13', '21:30:13', 15);
 
 -- --------------------------------------------------------
 
@@ -467,7 +437,7 @@ INSERT INTO `orders` (`id_orders`, `nama_kustomer`, `alamat`, `telpon`, `email`,
 -- Table structure for table `orders_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `orders_detail` (
+CREATE TABLE `orders_detail` (
   `id_orders` int(5) NOT NULL,
   `product_id` int(5) NOT NULL,
   `id_atribut` int(11) NOT NULL,
@@ -482,7 +452,14 @@ INSERT INTO `orders_detail` (`id_orders`, `product_id`, `id_atribut`, `jumlah`) 
 (107, 49, 0, 1),
 (108, 51, 0, 2),
 (109, 48, 0, 1),
-(109, 52, 0, 1);
+(109, 52, 0, 1),
+(110, 56, 0, 3),
+(111, 57, 0, 1),
+(112, 60, 0, 1),
+(0, 59, 0, 1),
+(114, 50, 0, 1),
+(114, 45, 0, 1),
+(115, 51, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -490,7 +467,7 @@ INSERT INTO `orders_detail` (`id_orders`, `product_id`, `id_atribut`, `jumlah`) 
 -- Table structure for table `orders_temp`
 --
 
-CREATE TABLE IF NOT EXISTS `orders_temp` (
+CREATE TABLE `orders_temp` (
   `id_orders_temp` int(5) NOT NULL,
   `product_id` int(11) NOT NULL,
   `id_atribut` int(11) NOT NULL,
@@ -499,14 +476,17 @@ CREATE TABLE IF NOT EXISTS `orders_temp` (
   `tgl_order_temp` date NOT NULL,
   `jam_order_temp` time NOT NULL,
   `stok_temp` int(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `orders_temp`
 --
 
 INSERT INTO `orders_temp` (`id_orders_temp`, `product_id`, `id_atribut`, `id_session`, `jumlah`, `tgl_order_temp`, `jam_order_temp`, `stok_temp`) VALUES
-(3, 43, 0, 'ki1vpm9f8omumou3maeq56rt71', 1, '2016-10-05', '21:06:04', 0);
+(4, 59, 0, '4q82g6qccpunv14du6u3rskgs7', 1, '2016-10-13', '21:30:26', 0),
+(5, 57, 0, '4q82g6qccpunv14du6u3rskgs7', 1, '2016-10-13', '21:54:14', 0),
+(6, 45, 0, '4q82g6qccpunv14du6u3rskgs7', 1, '2016-10-13', '22:08:19', 0),
+(7, 52, 0, 'bghoa48jkupudbrbiburtfi8f6', 1, '2016-10-13', '22:30:01', 0);
 
 -- --------------------------------------------------------
 
@@ -514,7 +494,7 @@ INSERT INTO `orders_temp` (`id_orders_temp`, `product_id`, `id_atribut`, `id_ses
 -- Table structure for table `product`
 --
 
-CREATE TABLE IF NOT EXISTS `product` (
+CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_code` varchar(250) DEFAULT NULL,
   `product_name` varchar(250) DEFAULT NULL,
@@ -536,28 +516,31 @@ CREATE TABLE IF NOT EXISTS `product` (
   `category_id` int(11) DEFAULT NULL,
   `product_seo` varchar(250) DEFAULT NULL,
   `product_date` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`product_id`, `product_code`, `product_name`, `product_desc`, `product_price`, `product_discount`, `product_terlaris`, `product_promo`, `product_sold_out`, `product_pre_order`, `product_ready_stock`, `product_color`, `product_bahan`, `product_size`, `product_lama_kirim`, `product_jumlah`, `product_images`, `brand_id`, `category_id`, `product_seo`, `product_date`) VALUES
-(43, '122', 'hijab intan', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 34000, 50, NULL, 'Y', NULL, NULL, NULL, 'pink', 'caton', 'M', '1 Hari', 22, 'hijab-jogja-store-hijab-intan-70hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 4, 1, 'hijab-intan', '2016-09-12'),
-(44, 'P0129', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 32000, 40, NULL, 'New', NULL, NULL, NULL, 'Hitam', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store-hhhhhhhhhhhhhhh-17hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pasmina', '2016-09-12'),
-(45, '21', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 28000, 10, NULL, 'New', NULL, NULL, NULL, 'Kuning', 'Katun', 'M', '1 Haru', 9, 'hijab-jogja-store--62hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 3, 2, 'pasmina', '2016-09-12'),
-(46, '918282', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 55000, 10, NULL, 'New', NULL, NULL, NULL, 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--61hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pamina-baru', '2016-09-12'),
-(47, '120099', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 40000, 10, NULL, 'New', NULL, NULL, NULL, 'Hijau', 'Kartun', 'M', '1 Hari', 10, 'hijab-jogja-store--75hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pamina-baru', '2016-09-12'),
-(48, '029888', 'New Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 45000, 10, NULL, 'New', NULL, NULL, NULL, 'Hijau', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store--94hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 4, 2, 'new-pasmina', '2016-09-12'),
-(49, 'Scraf New', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 35000, 10, NULL, 'New', NULL, NULL, NULL, 'Hijau', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--13hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina', '2016-09-12'),
-(50, '0191', 'Scaf', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 340000, 0, NULL, 'New', NULL, NULL, NULL, 'Hijau', 'Rawis', 'M', '1 Hari', 10, 'hijab-jogja-store--30hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'scaf', '2016-09-12'),
-(51, 'P0102910', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 55000, 10, NULL, 'New', NULL, NULL, NULL, 'Pink', 'Katun', 'M', '1 Bulan', 10, 'hijab-jogja-store--25hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pasmina', '2016-09-12'),
-(52, '90po001', 'Pasmina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 50000, 20, NULL, 'New', NULL, NULL, NULL, 'Pink', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--18hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pasmina-baru', '2016-09-12'),
-(53, '029302', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 34000, 12, NULL, 'New', NULL, NULL, NULL, 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--50hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pamina-baru', '2016-09-12'),
-(54, '29Pksd', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 25000, 10, NULL, 'Baru', NULL, NULL, NULL, 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--33hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 3, 3, 'pasmina', '2016-09-12'),
-(55, '09191', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 190000, 12, NULL, 'New', NULL, NULL, NULL, 'Hitam', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store--21hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 2, 3, 'pasmina', '2016-09-12'),
-(56, 'p0129', 'hijab intan', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 40000, 10, 'N', 'N', 'N', 'N', 'N', 'Pink', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store-hijab-intan-62hijaber3.jpg', 5, 3, 'hijab-intan', '2016-10-07'),
-(57, '22', '222', '222', 2222, 0, 'Y', 'N', 'N', 'Y', 'Y', 'wee', 'eee', '221212', '1222', 22, 'hijab-jogja-store-222-4hijaber3.jpg', 2, 3, '222', '2016-10-07');
+(43, '122', 'hijab intan', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 34000, 0, 'Y', 'Y', 'N', 'Y', 'Y', 'pink', 'caton', 'M', '1 Hari', 22, 'hijab-jogja-store-hijab-intan-70hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 1, 'hijab-intan', '2016-10-11'),
+(44, 'P0129', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 32000, 0, 'Y', 'Y', 'N', 'Y', 'Y', 'Hitam', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store-hhhhhhhhhhhhhhh-17hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina', '2016-10-11'),
+(45, '21', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 28000, 0, 'Y', 'Y', 'N', 'Y', 'Y', 'Kuning', 'Katun', 'M', '1 Haru', 9, 'hijab-jogja-store--62hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 5, 2, 'pasmina', '2016-10-11'),
+(46, '918282', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 55000, 1, 'Y', 'Y', 'N', 'Y', 'Y', 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--61hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pamina-baru', '2016-10-11'),
+(47, '120099', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 40000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Hijau', 'Kartun', 'M', '1 Hari', 10, 'hijab-jogja-store--75hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pamina-baru', '2016-10-11'),
+(48, '029888', 'New Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 45000, 0, 'Y', 'Y', 'Y', 'Y', 'Y', 'Hijau', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store--94hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 5, 2, 'new-pasmina', '2016-10-11'),
+(49, 'Scraf New', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 35000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Hijau', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--13hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina', '2016-09-12'),
+(50, '0191', 'Scaf', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 340000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Hijau', 'Rawis', 'M', '1 Hari', 10, 'hijab-jogja-store--30hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'scaf', '2016-09-12'),
+(51, 'P0102910', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 55000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Pink', 'Katun', 'M', '1 Bulan', 10, 'hijab-jogja-store--25hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina', '2016-10-11'),
+(52, '90po001', 'Pasmina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 50000, 20, 'Y', 'Y', 'Y', 'Y', 'Y', 'Pink', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--18hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina-baru', '2016-10-11'),
+(53, '029302', 'Pamina Baru', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 34000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--50hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pamina-baru', '2016-10-11'),
+(54, '29Pksd', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 25000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Kuning', 'Katun', 'M', '1 Hari', 10, 'hijab-jogja-store--33hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', 5, 3, 'pasmina', '2016-10-11'),
+(55, '09191', 'Pasmina', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 190000, 1, 'Y', 'Y', 'Y', 'Y', 'Y', 'Hitam', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store--21hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', 5, 3, 'pasmina', '2016-10-11'),
+(56, 'p0129', 'hijab intan', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 40000, 10, 'Y', 'Y', 'N', 'N', 'N', 'Pink', 'Katun', 'M', '1 Hari', 12, 'hijab-jogja-store-hijab-intan-62hijaber3.jpg', 5, 3, 'hijab-intan', '2016-10-10'),
+(57, 'p0a', 'Hijab Motif', 'Tampil cantik dan menarik tidak harus mahal dengan Koleksi HijabJogjaStore', 65000, 30, 'Y', 'Y', 'N', 'Y', 'Y', 'wee', 'eee', '221212', '1222', 22, 'hijab-jogja-store-222-4hijaber3.jpg', 5, 2, 'hijab-motif', '2016-10-13'),
+(58, 'As9129', 'Pasmina Segiempat', '2222', 55000, 75, 'Y', 'N', 'Y', 'N', 'Y', '22', '22', '22', '22', 222, 'hijab-jogja-store-222-3013hijaber.jpg', 3, 2, 'pasmina-segiempat', '2016-10-13'),
+(59, 'Pro91821', 'Pasmina Motif ', 'sss', 55000, 25, 'Y', 'N', 'Y', 'N', 'N', '222', '22', '22', '22', 22, 'hijab-jogja-store-22-5613hijaber.jpg', 3, 3, 'pasmina-motif-', '2016-10-13'),
+(60, 'pd9283239', 'Pasmina Motif', '222', 45000, 0, 'N', 'N', 'N', 'N', 'N', '222', '222', '222', '222', 22, 'hijab-jogja-store-222-1313hijaber.jpg', 2, 3, 'pasmina-motif', '2016-10-13');
 
 -- --------------------------------------------------------
 
@@ -565,7 +548,7 @@ INSERT INTO `product` (`product_id`, `product_code`, `product_name`, `product_de
 -- Table structure for table `produk`
 --
 
-CREATE TABLE IF NOT EXISTS `produk` (
+CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `id_subkategori` int(11) NOT NULL,
@@ -577,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `gambar` varchar(100) NOT NULL,
   `special` enum('Y','N') NOT NULL DEFAULT 'N',
   `terlaris` enum('Y','N') NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB AUTO_INCREMENT=1114 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
@@ -595,12 +578,12 @@ INSERT INTO `produk` (`id_produk`, `id_kategori`, `id_subkategori`, `tgl_masuk`,
 -- Table structure for table `produk_atribut`
 --
 
-CREATE TABLE IF NOT EXISTS `produk_atribut` (
+CREATE TABLE `produk_atribut` (
   `id_atribut` int(11) NOT NULL,
   `id_produkopsi` int(11) NOT NULL,
   `nama_atribut` varchar(100) NOT NULL,
   `nama_atribut_seo` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk_atribut`
@@ -625,11 +608,11 @@ INSERT INTO `produk_atribut` (`id_atribut`, `id_produkopsi`, `nama_atribut`, `na
 -- Table structure for table `produk_opsi`
 --
 
-CREATE TABLE IF NOT EXISTS `produk_opsi` (
+CREATE TABLE `produk_opsi` (
   `id_produkopsi` int(11) NOT NULL,
   `nama_opsi` varchar(100) NOT NULL,
   `nama_opsi_seo` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk_opsi`
@@ -644,13 +627,13 @@ INSERT INTO `produk_opsi` (`id_produkopsi`, `nama_opsi`, `nama_opsi_seo`) VALUES
 -- Table structure for table `produk_to_opsi`
 --
 
-CREATE TABLE IF NOT EXISTS `produk_to_opsi` (
+CREATE TABLE `produk_to_opsi` (
   `id` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `id_produkopsi` int(11) NOT NULL,
   `id_atribut` int(11) NOT NULL,
   `pic` varchar(1500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk_to_opsi`
@@ -734,7 +717,7 @@ INSERT INTO `produk_to_opsi` (`id`, `id_produk`, `id_produkopsi`, `id_atribut`, 
 -- Table structure for table `shoutbox`
 --
 
-CREATE TABLE IF NOT EXISTS `shoutbox` (
+CREATE TABLE `shoutbox` (
   `id_shoutbox` int(5) NOT NULL,
   `nama` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `website` varchar(50) COLLATE latin1_general_ci NOT NULL,
@@ -742,7 +725,7 @@ CREATE TABLE IF NOT EXISTS `shoutbox` (
   `tanggal` date NOT NULL,
   `jam` time NOT NULL,
   `aktif` enum('Y','N') COLLATE latin1_general_ci NOT NULL DEFAULT 'Y'
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `shoutbox`
@@ -763,7 +746,7 @@ INSERT INTO `shoutbox` (`id_shoutbox`, `nama`, `website`, `pesan`, `tanggal`, `j
 -- Table structure for table `statistik`
 --
 
-CREATE TABLE IF NOT EXISTS `statistik` (
+CREATE TABLE `statistik` (
   `ip` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
   `hits` int(10) NOT NULL DEFAULT '1',
@@ -62820,11 +62803,11 @@ INSERT INTO `statistik` (`ip`, `tanggal`, `hits`, `online`) VALUES
 -- Table structure for table `subcribe`
 --
 
-CREATE TABLE IF NOT EXISTS `subcribe` (
+CREATE TABLE `subcribe` (
   `id_subcribe` int(11) NOT NULL,
   `email` varchar(128) NOT NULL,
   `aktif` varchar(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subcribe`
@@ -62860,13 +62843,13 @@ INSERT INTO `subcribe` (`id_subcribe`, `email`, `aktif`) VALUES
 -- Table structure for table `subimages`
 --
 
-CREATE TABLE IF NOT EXISTS `subimages` (
+CREATE TABLE `subimages` (
   `id` int(5) NOT NULL,
   `product_id` int(11) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `gambar` text NOT NULL,
   `tanggal` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1153 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subimages`
@@ -62876,7 +62859,9 @@ INSERT INTO `subimages` (`id`, `product_id`, `judul`, `gambar`, `tanggal`) VALUE
 (1149, 0, '', '877227hijab-jogja-store--62hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', '2016-10-05 22:48:01'),
 (1150, 0, '', '478942hijab-jogja-store--62hijab-jogja-store-hhhhhhhhhhhhhhh-62hijaber1.jpg', '2016-10-05 22:48:15'),
 (1151, 56, '', '697753hijab-jogja-store--61hijab-jogja-store-hijab-nafa-reviana-6hijaber3.jpg', '2016-10-05 22:49:29'),
-(1152, 56, '', '181915hijab-jogja-store--54test092302.jpg', '2016-10-05 22:49:46');
+(1152, 56, '', '181915hijab-jogja-store--54test092302.jpg', '2016-10-05 22:49:46'),
+(1153, 60, '', '8050567hijaber3.jpg', '2016-10-13 22:29:22'),
+(1154, 60, '', '68307413hijaber.jpg', '2016-10-13 22:29:29');
 
 -- --------------------------------------------------------
 
@@ -62884,14 +62869,14 @@ INSERT INTO `subimages` (`id`, `product_id`, `judul`, `gambar`, `tanggal`) VALUE
 -- Table structure for table `subkategori`
 --
 
-CREATE TABLE IF NOT EXISTS `subkategori` (
+CREATE TABLE `subkategori` (
   `id_subkategori` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `nama` varchar(128) NOT NULL,
   `seo` varchar(128) NOT NULL,
   `aktif` enum('Y','N') NOT NULL,
   `tanggal` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subkategori`
@@ -62909,7 +62894,7 @@ INSERT INTO `subkategori` (`id_subkategori`, `id_kategori`, `nama`, `seo`, `akti
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `password` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `nama_lengkap` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
@@ -62925,17 +62910,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `nama_lengkap`, `email`, `no_telp`, `level`, `blokir`, `id_session`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'Hijab Jogja Store', 'cs@hijabjogjastore.com', '08192819212', 'admin', 'N', 'n16jojcuktpcmts8laqgp0sfp0');
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'Hijab Jogja Store', 'cs@hijabjogjastore.com', '08192819212', 'admin', 'N', 'bghoa48jkupudbrbiburtfi8f6');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `album`
---
-ALTER TABLE `album`
-  ADD PRIMARY KEY (`id_album`);
 
 --
 -- Indexes for table `brand`
@@ -62954,12 +62933,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id_galeri`);
-
---
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
 
 --
 -- Indexes for table `kota`
@@ -63110,145 +63083,135 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `album`
---
-ALTER TABLE `album`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
   MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
---
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
-  MODIFY `id_kota` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `id_kota` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `mainmenu`
 --
 ALTER TABLE `mainmenu`
-  MODIFY `id_main` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_main` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `id_modul` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `mod_bank`
 --
 ALTER TABLE `mod_bank`
-  MODIFY `id_bank` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id_bank` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `mod_fb`
 --
 ALTER TABLE `mod_fb`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `mod_header`
 --
 ALTER TABLE `mod_header`
-  MODIFY `id_slider` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_slider` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `mod_kurir`
 --
 ALTER TABLE `mod_kurir`
-  MODIFY `id_kurir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_kurir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `mod_page`
 --
 ALTER TABLE `mod_page`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `mod_slider`
 --
 ALTER TABLE `mod_slider`
-  MODIFY `id_slider` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `id_slider` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `mod_sosial`
 --
 ALTER TABLE `mod_sosial`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `mod_testimoni`
 --
 ALTER TABLE `mod_testimoni`
-  MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
+  MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `mod_ym`
 --
 ALTER TABLE `mod_ym`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_orders` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+  MODIFY `id_orders` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT for table `orders_temp`
 --
 ALTER TABLE `orders_temp`
-  MODIFY `id_orders_temp` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_orders_temp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1114;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1114;
 --
 -- AUTO_INCREMENT for table `produk_atribut`
 --
 ALTER TABLE `produk_atribut`
-  MODIFY `id_atribut` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_atribut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `produk_opsi`
 --
 ALTER TABLE `produk_opsi`
-  MODIFY `id_produkopsi` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_produkopsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `produk_to_opsi`
 --
 ALTER TABLE `produk_to_opsi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `shoutbox`
 --
 ALTER TABLE `shoutbox`
-  MODIFY `id_shoutbox` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_shoutbox` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `subcribe`
 --
 ALTER TABLE `subcribe`
-  MODIFY `id_subcribe` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id_subcribe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `subimages`
 --
 ALTER TABLE `subimages`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1153;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1155;
 --
 -- AUTO_INCREMENT for table `subkategori`
 --
 ALTER TABLE `subkategori`
-  MODIFY `id_subkategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_subkategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -44,7 +44,8 @@ elseif ($module=='product' AND $act=='input')
 		$acak           = rand(1,99);
 		$nama_file_unik = "hijab-jogja-store-".$product_seo."-".$acak.$nama_file; 
 		UploadProduct($nama_file_unik);
-		mysql_query("INSERT INTO product(product_code,
+		//mysql_query(
+      $sql="INSERT INTO product(product_code,
                                  product_name,
                                  product_desc,
                                  product_price,
@@ -84,8 +85,8 @@ elseif ($module=='product' AND $act=='input')
                                '$_POST[category]',
                                '$_POST[brand]',
                                '$product_seo',
-                               '".date('Y-m-d')."')");
-//echo $sql; exit;
+                               '".date('Y-m-d')."')";//);
+echo $sql; exit;
 	                                   
 		//$idp = mysql_insert_id();
 	  }
@@ -184,28 +185,30 @@ elseif ($module=='product' AND $act=='update')
 	unlink("../../../assets/images/product/s_$data[product_images]");
 	
 	UploadProduct($nama_file_unik);
-      mysql_query("UPDATE product SET 	product_code 		= '$_POST[product_code]',
-              	    								product_name 		= '$_POST[product_name]',
-              	    								product_desc 		= '$_POST[product_desc]',
-	                                 	product_price		= '$_POST[product_price]',
-	                                 	product_discount	= '$_POST[product_discount]',
-	                                  product_terlaris = '$_POST[product_terlaris]',
-                                    product_promo   = '$_POST[product_promo]',
-                                    product_terlaris = '$_POST[product_terlaris]',
-                                    product_sold_out = '$_POST[product_sold_out]',
-                                    product_pre_order = '$_POST[product_pre_order]',
-                                    product_ready_stock ='$_POST[product_ready_stock]',
-	                                 	product_color		= '$_POST[product_color]',
-	                                 	product_bahan		= '$_POST[product_bahan]',
-	                                 	product_size		= '$_POST[product_size]',
-	                                 	product_lama_kirim	= '$_POST[product_lama_kirim]',
-	                                 	product_jumlah		= '$_POST[product_jumlah]',
-	                                 	product_images		= '$nama_file_unik',
-	                                 	brand_id			= '$_POST[brand]',
-	                                 	category_id			= '$_POST[category]',
-	                                 	product_seo			= '$product_seo',
-	                                 	product_date		= '".date("Y-m-d")."'
-                             WHERE product_id   = '$_POST[id]'");
+      //mysql_query(
+        $sql="UPDATE product SET 	product_code 		= '$_POST[product_code]',
+                  	    								product_name 		= '$_POST[product_name]',
+                  	    								product_desc 		= '$_POST[product_desc]',
+    	                                 	product_price		= '$_POST[product_price]',
+    	                                 	product_discount	= '$_POST[product_discount]',
+    	                                  product_terlaris = '$_POST[product_terlaris]',
+                                        product_promo   = '$_POST[product_promo]',
+                                        product_terlaris = '$_POST[product_terlaris]',
+                                        product_sold_out = '$_POST[product_sold_out]',
+                                        product_pre_order = '$_POST[product_pre_order]',
+                                        product_ready_stock ='$_POST[product_ready_stock]',
+    	                                 	product_color		= '$_POST[product_color]',
+    	                                 	product_bahan		= '$_POST[product_bahan]',
+    	                                 	product_size		= '$_POST[product_size]',
+    	                                 	product_lama_kirim	= '$_POST[product_lama_kirim]',
+    	                                 	product_jumlah		= '$_POST[product_jumlah]',
+    	                                 	product_images		= '$nama_file_unik',
+    	                                 	brand_id			= '$_POST[brand]',
+    	                                 	category_id			= '$_POST[category]',
+    	                                 	product_seo			= '$product_seo',
+    	                                 	product_date		= '".date("Y-m-d")."'
+                             WHERE product_id   = '$_POST[id]'";//);
+    echo $sql; exit;
 		header('location:../../media.php?module='.$module);
     }
     else 

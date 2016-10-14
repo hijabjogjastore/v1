@@ -1,6 +1,6 @@
     <div id="sb-site">
         <div class="overlay-background"></div>
-        <h2 class="text-center">Kebijakan Privasi </h2>
+        <h2 class="text-center">Kontak Kami </h2>
         <hr>
 
         <div class="row-fluid">

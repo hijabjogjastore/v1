@@ -122,7 +122,8 @@
                         <div class="badge-tag orange">
                             Baru!
                         </div>
-                         <div class="badge-tag cyan">
+                         
+                        <div class="badge-tag cyan">
                             Baru!
                         </div>
                     </div>
@@ -235,6 +236,9 @@
             $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -245,9 +249,9 @@
 
                         <div class="caption">
                             <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Sisterfields Tunik">Sisterfiel...</h4>
+                                <h4 class="product-name text-center small" title="Sisterfields Tunik"><?php echo $data_product['product_name']; ?></h4>
 
-                                <h4 class="price text-center">Rp99,000<br><strike class="text-muted"><small>Rp149,000</small></strike></h4>
+                                <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4>
                             </a>
 
                         </div>
@@ -276,7 +280,7 @@
                         $result_category=mysql_query($sql_category);
                         while($data_category=mysql_fetch_array($result_category)){
                     ?>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atasan Muslim</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php echo $data_category['category_name']; ?></a></li>
                     <?php
                     }
                     ?>

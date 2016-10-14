@@ -4,6 +4,7 @@
         <div class="col-xs-6" style="padding-right:0">
             <button class="btn btn-default btn-block" data-dropdown-filter="#filter" style="color:#5a5a5a;border-radius:0;text-align:left">Filter <span class="caret pull-right" style="margin-top:6px;"></span></button>
         </div>
+
         <div class="col-xs-6" style="padding-left:0">
             <button class="btn btn-default btn-block" data-show-content="#sourceSorting" data-title="Urutkan" style="color:#5a5a5a;border-radius:0;text-align:left">Urutkan <span class="caret pull-right" style="margin-top:6px;"></span></button>
             <div id="sourceSorting" class="hide">
@@ -15,6 +16,7 @@
                 </ul>
             </div>
         </div>
+        
         <div id="filter" class="col-xs-12 dropdown-filter">
             <form action="" method="get" id="form-filter">
                 <div class="form-group">

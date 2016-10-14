@@ -79,30 +79,8 @@ elseif ($_GET['mod']=='checkout-tanks') {
 
 elseif($_GET['mod']=='form_transaksi')
 {
-/*	$kar1=strstr($_POST['email'], "@");
-	$kar2=strstr($_POST['email'], ".");
 
-	if (empty($_POST['nama']) || empty($_POST['alamat']) || empty($_POST['telpon']) || empty($_POST['email'])){
-	  echo "<script>window.alert('Data yang Anda isikan belum lengkap. Ulangi Lagi');
-			window.location(history.back(-1))</script>";
-	}
-	elseif (!ereg("[a-z|A-Z]","$_POST[nama]")){
-		echo "<script>window.alert('Nama tidak boleh diisi dengan angka atau simbol. Ulangi Lagi');
-			window.location(history.back(-1))</script>";
-	}
-	elseif (strlen($kar1)==0 OR strlen($kar2)==0){
-		echo "<script>window.alert('Alamat email Anda tidak valid, mungkin kurang tanda titik (.) atau tanda @. Ulangi Lagi');
-			window.location(history.back(-1))</script>";
-	}
-	elseif(empty($_POST['kota']) || $_POST['kota']=="0")
-	{
-		echo "<script>window.alert('Pilih kota tujuan sesuai data yang disediakan. Ulangi Lagi');
-		window.location(history.back(-1))</script>";
-	}
-	else
-	{*/
 		$idkota = cleanInput($_POST['kota']);
-
 		// fungsi untuk mendapatkan isi keranjang belanja
 		function isi_keranjang()
 		{
@@ -207,7 +185,7 @@ elseif($_GET['mod']=='form_transaksi')
 			  <tr>
 				<td colspan=5 align=right>Grand Total : Rp. </td><td align=right><b>$grandtotal_rp</b></td></tr>
 			  </table><br /><hr />";
-		$pesan.= "<p>Email ini dikirim  sebagai tanda transaksi yang telah dilakukan melalui nanakuhijabstore.com 
+		$pesan.= "<p>Email ini dikirim  sebagai tanda transaksi yang telah dilakukan melalui hijabjogjastore.com 
 		dengan menggunakan email <b>$_POST[email]</b>, jika anda merasa tidak pernah melakukan transaksi harap abaikan email ini. </p>";
 
 		$subjek="Pemesanan Online Hijab Jogja Store (hijabjogjastore.com)";

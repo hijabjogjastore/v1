@@ -247,6 +247,9 @@
              $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -264,7 +267,7 @@
                             <?php
                             }else{
                             ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
                             <?php
                             }
                             ?>
@@ -296,6 +299,9 @@
             $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -315,7 +321,7 @@
                             <?php
                             }else{
                             ?>
-                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted"><small>Rp<?php echo $hargadisc; ?></small></strike></h4> 
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
                             <?php
                             }
                             ?>

@@ -126,8 +126,7 @@
                         }
                         ?>
                         <div class="badge-tag orange">
-                            Baru!
-                        </div>
+                            Baru!M N                        </div>
                          <div class="badge-tag cyan">
                             Baru!
                         </div>
@@ -169,7 +168,7 @@
         </div>
         <!-- row end -->
         <?php
-        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product where brand_id='$_GET[id]' ORDER BY product_id ASC"));
+        $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM product where brand_id='$_GET[id]1`    quotemeta(78[]\)' ORDER BY product_id ASC"));
         $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
         $linkHalaman = $p->navHalaman($_GET['halaman'], $jmlhalaman);
           //echo "<div class='rBox'> <br /><div class='paging'>$linkHalaman <br /><br /></div></div>";
@@ -201,6 +200,9 @@
              $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -208,13 +210,22 @@
                         <a href="#" onClick="#">
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
-                        <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Aida Pashmina">Aida Pashm...</h4>
-
-                                <h4 class="price text-center">Rp55,000<br><strike class="text-muted"><small>Rp99,000</small></strike></h4>
-                            </a>
-                        </div>
+                         <div class="caption">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
+                        </a>
+                    </div>
                     </div>
                 </div>
                 <?php
@@ -241,6 +252,9 @@
             $sql_product="select * from product ORDER BY product_id DESC LIMIT 12";
             $result_product=mysql_query($sql_product);
             while($data_product=mysql_fetch_array($result_product)){
+            $disc        = ($data_product['product_discount']/100)*$data_product['product_price'];
+            $hargadisc   = number_format(($data_product['product_price']-$disc),0,",",".");
+            $harga       = format_rupiah($data_product['product_price']);
             //for($i=0;$i<12;$i++){
             ?>
                 <div class="col-xs-4 col-sm-4 col-md-2 col-recently-purchased">
@@ -249,14 +263,22 @@
                             <img width="275px" src="assets/images/product/<?php echo $data_product['product_images'] ?>" border="0" class="img-responsive" />
                         </a>
 
-                        <div class="caption">
-                            <a href="#" onClick="#">
-                                <h4 class="product-name text-center small" title="Sisterfields Tunik">Sisterfiel...</h4>
-
-                                <h4 class="price text-center">Rp99,000<br><strike class="text-muted"><small>Rp149,000</small></strike></h4>
-                            </a>
-
-                        </div>
+                       <div class="caption">
+                        <a href="details-product-<?php echo $data_product[product_id]."-".$data_product[product_seo].".html";?>" onClick="#">
+                            <h4 class="product-name text-center small" title="Leona Turban"><?php echo $data_product['product_name']; ?></h4>
+                            <?php
+                            if($data_product['product_discount'] == '0'){
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $harga; ?><br><strike class="text-muted" style="color: rgb(255, 255, 255);"><small style="color: rgb(255, 255, 255);">Rp50,000</small></strike></h4>
+                            <?php
+                            }else{
+                            ?>
+                            <h4 class="price text-center">Rp<?php echo $hargadisc; ?><br><strike class="text-muted"><small>Rp<?php echo $harga; ?></small></strike></h4> 
+                            <?php
+                            }
+                            ?>
+                        </a>
+                    </div>
                     </div>
                 </div>
                 <?php
